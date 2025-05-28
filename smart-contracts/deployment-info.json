@@ -1,0 +1,8 @@
+{
+  "network": "storyProtocolTestnet",
+  "timestamp": "2025-05-27T15:37:11.401Z",
+  "registry": "0xc010C027c557dB20F5A0cE653Cca257A3De24843",
+  "licenseManager": "0x7a67Cd67A8283BCBbEB53136Cf83a7a6729d9269",
+  "revenueDistributor": "0x342a8FA38C1e8118cD7cDDB3af3e9C156958afd2",
+  "tokenVerifier": "0xd712770C608Ea7E82C719f85673D4Eb3932C2525"
+}

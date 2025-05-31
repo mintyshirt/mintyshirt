@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: ['/src/index.tsx']
+      external: ['/src/index.tsx', './App.css']
     }
   },
   css: {

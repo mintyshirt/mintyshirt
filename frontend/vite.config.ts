@@ -6,7 +6,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: ['/src/index.ts']
+      external: ['/src/index.tsx']
+    }
+  },
+  css: {
+    modules: {
+      localsConvention: 'camelCase'
     }
   }
 });

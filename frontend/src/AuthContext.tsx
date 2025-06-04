@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { useWeb3 } from './Web3Context';
-import authService from '../services/authService';
+import authService from './authService';
 
 interface AuthContextType {
   user: UserType | null;

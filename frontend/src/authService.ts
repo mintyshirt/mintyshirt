@@ -10,7 +10,9 @@ interface UserData {
 
 // Création d'une instance axios avec une configuration de base
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
+  // Avec Vite, les variables d'environnement doivent commencer par VITE_
+  // afin d'être exposées au code client via import.meta.env
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -41,7 +43,7 @@ api.interceptors.response.use(
         try {
           // Tentative de rafraîchissement du token
           const response = await axios.post(
-            `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/refresh`,
+            `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/refresh`,
             { refreshToken }
           );
           

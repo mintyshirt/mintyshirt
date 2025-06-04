@@ -127,7 +127,7 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
 
 ## Adresses des Smart Contracts (Testnet Aeneid)
 
-Les adresses exactes des smart contracts déployés sur le testnet Aeneid se trouvent dans le fichier `/home/ubuntu/web3-project/implementation/smart-contracts/deployment-info.json`.
+Les adresses exactes des smart contracts déployés sur le testnet Aeneid se trouvent dans le fichier `smart-contracts/deployment-info.json`.
 
 ## Notes Importantes
 

@@ -40,7 +40,7 @@ Cette commande peut prendre quelques minutes pour s'exécuter.
 2. Ajoutez les lignes suivantes dans ce fichier :
 
 ```
-# Configuration pour le testnet Story Protocol Aenid
+# Configuration pour le testnet Story Protocol Aeneid
 STORY_PROTOCOL_TESTNET_URL=https://aeneid.storyrpc.io
 PRIVATE_KEY=VOTRE_CLE_PRIVEE_ICI
 ETHERSCAN_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ123456

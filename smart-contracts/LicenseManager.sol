@@ -403,5 +403,28 @@ contract LicenseManager is ILicenseManager, Ownable, ReentrancyGuard {
      * @param count Nombre d'utilisateurs à ajouter
      */
     function incrementLicenseUsers(uint256 licenseId, uint256 count) external override {
-       
-(Content truncated due to size limit. Use line ranges to read in chunks)
+        require(count > 0, "Nombre invalide");
+
+        License storage license = _licenses[licenseId];
+        require(license.id == licenseId, "Licence inexistante");
+        require(license.status == LicenseStatus.ACTIVE, "Licence non active");
+
+        IMintyShirtRegistry registry = IMintyShirtRegistry(_registryAddress);
+        IMintyShirtRegistry.IPAsset memory ipAsset = registry.getIPAsset(license.ipId);
+        IMintyShirtRegistry.Creator memory creator = registry.getCreator(ipAsset.creatorId);
+        IMintyShirtRegistry.Creator memory licensee = registry.getCreator(license.licenseeId);
+
+        require(
+            creator.creatorAddress == msg.sender ||
+            licensee.creatorAddress == msg.sender ||
+            owner() == msg.sender,
+            "Non autorise"
+        );
+
+        if (license.maxUsers > 0) {
+            require(license.currentUsers + count <= license.maxUsers, "Limite depassee");
+        }
+
+        license.currentUsers += count;
+    }
+}

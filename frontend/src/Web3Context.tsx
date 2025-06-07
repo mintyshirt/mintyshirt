@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ethers } from 'ethers';
-import { MintyShirtRegistryABI } from '../lib/abis/MintyShirtRegistryABI';
-import { LicenseManagerABI } from '../lib/abis/LicenseManagerABI';
-import { RevenueDistributorABI } from '../lib/abis/RevenueDistributorABI';
-import { TokenVerifierABI } from '../lib/abis/TokenVerifierABI';
+import { MintyShirtRegistryABI } from './MintyShirtRegistryABI';
+import { LicenseManagerABI } from './LicenseManagerABI';
+import { RevenueDistributorABI } from './RevenueDistributorABI';
+import { TokenVerifierABI } from './TokenVerifierABI';
 
 // Adresses des contrats déployés sur le testnet Aeneid
 const CONTRACT_ADDRESSES = {

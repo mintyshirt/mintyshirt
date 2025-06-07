@@ -371,5 +371,10 @@ contract TokenVerifier is ITokenVerifier, Ownable, ReentrancyGuard {
      * @return hadTokens L'utilisateur avait-il le montant minimum
      */
     function hadTokensAtSnapshot(uint256 snapshotId, address userAddress, uint256 minAmount) external view override returns (bool) {
-  
-(Content truncated due to size limit. Use line ranges to read in chunks)
+        require(_snapshots[snapshotId].id == snapshotId, "Snapshot inexistant");
+        require(userAddress != address(0), "Adresse utilisateur invalide");
+
+        uint256 balance = _snapshotBalances[snapshotId][userAddress];
+        return balance >= minAmount;
+    }
+}

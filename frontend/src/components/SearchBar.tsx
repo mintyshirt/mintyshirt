@@ -6,7 +6,10 @@ interface SearchBarProps {
   className?: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ placeholder = "Rechercher des designs...", className = "" }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  placeholder = "Rechercher un produit, un créateur ou un token...",
+  className = "",
+}) => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState('');
 

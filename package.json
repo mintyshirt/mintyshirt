@@ -2,7 +2,7 @@
   "name": "mintyshirt",
   "version": "1.0.0",
   "description": "Plateforme de merchandising Web3 pour les créateurs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "build": "vite build",

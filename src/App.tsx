@@ -1,12 +1,7 @@
-import RoyaltyTokenExchange from './RoyaltyTokenExchange';
+import HomePage from './components/HomePage';
 
 function App() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-4">
-      <h1 className="text-3xl font-bold">Bienvenue sur MintyShirt</h1>
-      <RoyaltyTokenExchange />
-    </div>
-  );
+  return <HomePage />;
 }
 
 export default App;

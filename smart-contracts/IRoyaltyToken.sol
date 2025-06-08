@@ -12,6 +12,12 @@ interface IRoyaltyToken {
     function getRoyaltyPercentage() external view returns (uint256);
     
     function distributeRoyalties(uint256 amount) external;
+
+    function buyTokens(uint256 amount) external payable;
+
+    function sellTokens(uint256 amount) external;
+
+    function getTokenPrice() external view returns (uint256);
     
     function updateRoyaltyPercentage(uint256 newPercentage) external;
     

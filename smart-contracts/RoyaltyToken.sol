@@ -18,10 +18,15 @@ contract RoyaltyToken is IRoyaltyToken, ERC20, ERC20Burnable, Ownable, Reentranc
     uint256 private _royaltyPercentage; // en points de base (100 = 1%)
     uint256 private _totalDistributed;
     address private _registryAddress;
+    uint256 private _tokenPrice;
+    address private _platformWallet;
+    uint256 private constant COMMISSION_BPS = 200; // 2%
     
     // Événements
     event RoyaltiesDistributed(uint256 amount, uint256 timestamp);
     event RoyaltyPercentageUpdated(uint256 oldPercentage, uint256 newPercentage);
+    event TokensPurchased(address indexed buyer, uint256 amount, uint256 price);
+    event TokensSold(address indexed seller, uint256 amount, uint256 price);
     
     /**
      * @dev Constructeur
@@ -40,14 +45,20 @@ contract RoyaltyToken is IRoyaltyToken, ERC20, ERC20Burnable, Ownable, Reentranc
         address creatorAddress,
         uint256 ipId,
         uint256 royaltyPercentage,
-        address registryAddress
+        address registryAddress,
+        uint256 tokenPrice,
+        address platformWallet
     ) ERC20(name, symbol) {
         // Transférer la propriété au créateur
         _transferOwnership(creatorAddress);
         require(creatorAddress != address(0), "Adresse createur invalide");
         require(registryAddress != address(0), "Adresse registre invalide");
         require(royaltyPercentage <= 10000, "Pourcentage max 100%");
-        
+        require(platformWallet != address(0), "Adresse wallet invalide");
+
+        _tokenPrice = tokenPrice;
+        _platformWallet = platformWallet;
+
         _ipId = ipId;
         _royaltyPercentage = royaltyPercentage;
         _registryAddress = registryAddress;
@@ -117,6 +128,52 @@ contract RoyaltyToken is IRoyaltyToken, ERC20, ERC20Burnable, Ownable, Reentranc
      */
     function getTotalDistributed() external view override returns (uint256) {
         return _totalDistributed;
+    }
+
+    /**
+     * @dev Prix du token en wei pour une unité (1e18)
+     */
+    function getTokenPrice() external view returns (uint256) {
+        return _tokenPrice;
+    }
+
+    /**
+     * @dev Acheter des tokens
+     * @param amount Montant en plus petite unité (18 décimales)
+     */
+    function buyTokens(uint256 amount) external payable nonReentrant {
+        require(amount > 0, "Montant invalide");
+        uint256 cost = (amount * _tokenPrice) / 1e18;
+        require(msg.value >= cost, "Ether insuffisant");
+
+        uint256 commission = (cost * COMMISSION_BPS) / 10000;
+        payable(_platformWallet).transfer(commission);
+
+        _mint(msg.sender, amount);
+
+        if (msg.value > cost) {
+            payable(msg.sender).transfer(msg.value - cost);
+        }
+
+        emit TokensPurchased(msg.sender, amount, _tokenPrice);
+    }
+
+    /**
+     * @dev Vendre des tokens
+     * @param amount Montant en plus petite unité (18 décimales)
+     */
+    function sellTokens(uint256 amount) external nonReentrant {
+        require(amount > 0, "Montant invalide");
+        uint256 revenue = (amount * _tokenPrice) / 1e18;
+        uint256 commission = (revenue * COMMISSION_BPS) / 10000;
+        uint256 payout = revenue - commission;
+        require(address(this).balance >= payout, "Liquidite insuffisante");
+
+        _burn(msg.sender, amount);
+        payable(_platformWallet).transfer(commission);
+        payable(msg.sender).transfer(payout);
+
+        emit TokensSold(msg.sender, amount, _tokenPrice);
     }
     
     /**

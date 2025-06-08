@@ -39,7 +39,22 @@ async function main() {
   await tokenVerifier.deployed();
   console.log(`TokenVerifier déployé à l'adresse: ${tokenVerifier.address}`);
 
-  // Note: RoyaltyToken sera déployé séparément pour chaque IP
+  // Déployer un RoyaltyToken de démonstration
+  console.log("\nDéploiement de RoyaltyToken...");
+  const RoyaltyToken = await ethers.getContractFactory("RoyaltyToken");
+  const royaltyToken = await RoyaltyToken.deploy(
+    "Royalty Token",
+    "RYT",
+    ethers.utils.parseEther("0"),
+    deployer.address,
+    1,
+    500,
+    registry.address,
+    ethers.utils.parseEther("0.01"),
+    platformWallet
+  );
+  await royaltyToken.deployed();
+  console.log(`RoyaltyToken déployé à l'adresse: ${royaltyToken.address}`);
 
   console.log("\nTous les contrats ont été déployés avec succès!");
   console.log("\nRécapitulatif des adresses:");
@@ -47,6 +62,7 @@ async function main() {
   console.log(`- LicenseManager: ${licenseManager.address}`);
   console.log(`- RevenueDistributor: ${revenueDistributor.address}`);
   console.log(`- TokenVerifier: ${tokenVerifier.address}`);
+  console.log(`- RoyaltyToken: ${royaltyToken.address}`);
 
   // Enregistrer les adresses dans un fichier pour référence future
   const fs = require("fs");
@@ -57,6 +73,7 @@ async function main() {
     licenseManager: licenseManager.address,
     revenueDistributor: revenueDistributor.address,
     tokenVerifier: tokenVerifier.address,
+    royaltyToken: royaltyToken.address,
   };
 
   fs.writeFileSync(

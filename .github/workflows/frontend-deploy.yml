@@ -4,11 +4,21 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'frontend/**'
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - 'tsconfig.node.json'
   pull_request:
     branches: [ main ]
     paths:
-      - 'frontend/**'
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - 'tsconfig.node.json'
 
 jobs:
   build-and-test:
@@ -23,14 +33,10 @@ jobs:
         node-version: '16'
         
     - name: Install dependencies
-      run: |
-        cd frontend
-        npm install
+      run: npm install
         
     - name: Build
-      run: |
-        cd frontend
-        npm run build
+      run: npm run build
         
     - name: Trigger Netlify deploy
       if: success( ) && github.ref == 'refs/heads/main'

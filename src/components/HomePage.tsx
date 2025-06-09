@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaYoutube, FaTiktok, FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
 
 function Navbar() {
   const categories = [
@@ -43,9 +44,6 @@ function Navbar() {
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">TokenSwap</a>
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">DesignHub</a>
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">Stats</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">À propos</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">FAQ</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">Contact</a>
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -54,15 +52,15 @@ function Navbar() {
             placeholder="Rechercher…"
             className="border rounded px-2 py-1 text-black"
           />
+          <button className="relative">
+            <span className="text-xl">🛒</span>
+            <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
+          </button>
           <button className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded">
             Connect Wallet
           </button>
           <button className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap">
             S'inscrire
-          </button>
-          <button className="relative">
-            <span className="text-xl">🛒</span>
-            <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
           </button>
         </div>
       </div>
@@ -118,16 +116,16 @@ function BestSellers() {
 function HowItWorks() {
   const steps = [
     {
-      title: 'Étape 1 : Crée ton design',
-      text: 'Crée un visuel original et enregistre-le comme propriété intellectuelle sur la blockchain grâce à Story Protocol.',
+      title: 'Étape 1 : Enregistre tes designs',
+      text: 'Crée des designs originaux et protège-les comme propriétés intellectuelles sur la blockchain en quelques clics.',
     },
     {
       title: 'Étape 2 : Vends ton merch',
-      text: 'Tes designs sont imprimés à la demande sur des t-shirts, sweats et autres produits.',
+      text: 'Tes designs sont imprimés à la demande sur des t-shirts, sweats et autres produits éco-responsables, puis livrés partout dans le monde.',
     },
     {
       title: 'Étape 3 : Partage les revenus',
-      text: 'Tes fans peuvent acheter des tokens pour recevoir une part des ventes et accéder à des avantages exclusifs.',
+      text: 'Tes fans peuvent acheter des royalty tokens leur permettant de recevoir une part de tes revenus et d\'accéder à des avantages exclusifs.',
     },
   ];
   return (
@@ -157,10 +155,12 @@ function Footer() {
           <a href="#" className="hover:underline">Mentions légales</a>
           <a href="#" className="hover:underline">Token-gated affiliate program</a>
         </div>
-        <div className="flex justify-center space-x-4">
-          <a href="#" aria-label="Twitter" className="hover:text-purple-300">🐦</a>
-          <a href="#" aria-label="Instagram" className="hover:text-purple-300">📷</a>
-          <a href="#" aria-label="Discord" className="hover:text-purple-300">💬</a>
+        <div className="flex justify-center space-x-4 text-2xl">
+          <a href="#" aria-label="YouTube" className="hover:text-purple-300"><FaYoutube /></a>
+          <a href="#" aria-label="TikTok" className="hover:text-purple-300"><FaTiktok /></a>
+          <a href="#" aria-label="Instagram" className="hover:text-purple-300"><FaInstagram /></a>
+          <a href="#" aria-label="X" className="hover:text-purple-300"><FaTwitter /></a>
+          <a href="#" aria-label="Facebook" className="hover:text-purple-300"><FaFacebook /></a>
         </div>
         <form className="flex justify-center space-x-2">
           <input

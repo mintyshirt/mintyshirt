@@ -56,12 +56,12 @@ function Navbar() {
             <span className="text-xl">🛒</span>
             <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
           </button>
-          <button className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded">
-            Connect Wallet
-          </button>
-          <button className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap">
+          <a href="/login" className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded">
+            Se connecter
+          </a>
+          <a href="/register" className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap">
             S'inscrire
-          </button>
+          </a>
         </div>
       </div>
     </nav>

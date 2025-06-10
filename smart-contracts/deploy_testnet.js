@@ -39,6 +39,13 @@ async function main() {
   await tokenVerifier.deployed();
   console.log(`TokenVerifier déployé à l'adresse: ${tokenVerifier.address}`);
 
+  // Déployer GroupingModule
+  console.log("\nDéploiement de GroupingModule...");
+  const GroupingModule = await ethers.getContractFactory("GroupingModule");
+  const groupingModule = await GroupingModule.deploy(registry.address);
+  await groupingModule.deployed();
+  console.log(`GroupingModule déployé à l'adresse: ${groupingModule.address}`);
+
   // Déployer un RoyaltyToken de démonstration
   console.log("\nDéploiement de RoyaltyToken...");
   const RoyaltyToken = await ethers.getContractFactory("RoyaltyToken");
@@ -62,6 +69,7 @@ async function main() {
   console.log(`- LicenseManager: ${licenseManager.address}`);
   console.log(`- RevenueDistributor: ${revenueDistributor.address}`);
   console.log(`- TokenVerifier: ${tokenVerifier.address}`);
+  console.log(`- GroupingModule: ${groupingModule.address}`);
   console.log(`- RoyaltyToken: ${royaltyToken.address}`);
 
   // Enregistrer les adresses dans un fichier pour référence future
@@ -73,6 +81,7 @@ async function main() {
     licenseManager: licenseManager.address,
     revenueDistributor: revenueDistributor.address,
     tokenVerifier: tokenVerifier.address,
+    groupingModule: groupingModule.address,
     royaltyToken: royaltyToken.address,
   };
 

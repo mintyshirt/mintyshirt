@@ -9,6 +9,7 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - LicenseManager
    - RevenueDistributor
    - TokenVerifier
+   - GroupingModule
    - RoyaltyToken
 
 2. **Frontend** : Développé avec React/TypeScript et Tailwind CSS
@@ -38,6 +39,7 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
 - `LicenseManager.sol` : Gestion des licences et permissions
 - `RevenueDistributor.sol` : Distribution des revenus et royalties
 - `TokenVerifier.sol` : Vérification des tokens pour l'accès aux fonctionnalités
+- `GroupingModule.sol` : Association de plusieurs designs à une même IP
 - `RoyaltyToken.sol` : Token ERC20 pour les royalties
 
 ## Fonctionnalités Implémentées

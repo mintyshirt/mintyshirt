@@ -150,6 +150,7 @@ Restez à l'affût des prochaines fonctionnalités :
 - Intégration directe avec IPFS pour le téléversement de fichiers
 - Marché TokenSwap avancé pour l'échange de tokens de redevance
 - Groupes de chat privés pour les communautés de créateurs
+- Module de groupement de designs pour lier plusieurs créations à une même IP
 - Programme d'affiliation pour récompenser les promoteurs
 
 Nous vous souhaitons une excellente expérience sur MintyShirt !

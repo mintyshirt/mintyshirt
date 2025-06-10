@@ -91,6 +91,7 @@ L'architecture technique de MintyShirt est conçue pour offrir une expérience W
 - **RoyaltyToken** : Contrat ERC-20 pour les tokens de redevance
 - **LicenseManager** : Gestion des licences et conditions d'utilisation
 - **RevenueDistributor** : Distribution des revenus aux détenteurs de tokens
+- **GroupingModule** : Association de plusieurs designs à une IP
 
 ### 5. Integration Services
 

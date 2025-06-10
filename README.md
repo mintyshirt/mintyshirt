@@ -128,6 +128,20 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - `TOMO_API_URL` : URL de l'API Tomo.inc
    - `COVALENT_API_KEY` : Clé API pour l'intégration Covalent
    - `COVALENT_API_URL` : URL de l'API Covalent
+   - `AWS_ACCESS_KEY_ID` : Clé d'accès AWS pour SES
+   - `AWS_SECRET_ACCESS_KEY` : Clé secrète AWS pour SES
+   - `AWS_REGION` : Région AWS où SES est activé
+   - `SES_FROM_EMAIL` : Adresse email vérifiée comme expéditeur
+
+### Amazon SES
+
+1. Activer le service SES dans la console AWS sur la région souhaitée.
+2. Vérifier votre domaine ou l'adresse email expéditrice dans la section
+   "Identités" de SES.
+3. Copier les valeurs `AWS_ACCESS_KEY_ID` et `AWS_SECRET_ACCESS_KEY` d'un
+   utilisateur IAM autorisé à envoyer des emails.
+4. Renseigner `AWS_REGION` et `SES_FROM_EMAIL` dans votre configuration
+   d'environnement.
 
 ## Adresses des Smart Contracts (Testnet Aeneid)
 

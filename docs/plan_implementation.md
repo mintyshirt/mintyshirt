@@ -116,6 +116,7 @@ Ce document présente le plan d'implémentation détaillé pour le développemen
 - LicenseManager (`0x7a67Cd67A8283BCBbEB53136Cf83a7a6729d9269`)
 - RevenueDistributor (`0x342a8FA38C1e8118cD7cDDB3af3e9C156958afd2`)
 - TokenVerifier (`0xd712770C608Ea7E82C719f85673D4Eb3932C2525`)
+- GroupingModule (adresse à définir)
 
 ### Technologies Frontend
 - React / Next.js

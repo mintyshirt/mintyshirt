@@ -17,6 +17,7 @@ Ce document détaille notre stratégie de déploiement et de test sur le testnet
 3. **LicenseManager**
 4. **RevenueDistributor**
 5. **TokenVerifier**
+6. **GroupingModule**
 
 ## Plan de test
 

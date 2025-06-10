@@ -1,7 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaYoutube, FaTiktok, FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import ConnectWallet from './ConnectWallet';
+import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext';
 
 function Navbar() {
+  const { user } = useAuth();
+  const { items } = useCart();
   const categories = [
     'Créateurs de contenu',
     'Musiciens',
@@ -52,16 +59,22 @@ function Navbar() {
             placeholder="Rechercher…"
             className="border rounded px-2 py-1 text-black"
           />
-          <button className="relative">
+          <Link to="/cart" className="relative">
             <span className="text-xl">🛒</span>
-            <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
-          </button>
-          <a href="/login" className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded">
-            Se connecter
-          </a>
-          <a href="/register" className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap">
-            S'inscrire
-          </a>
+            <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">{items.length}</span>
+          </Link>
+          <Link to={user ? '/dashboard' : '/register'} className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap">
+            Créer un produit
+          </Link>
+          {user ? (
+            <span>{user.email}</span>
+          ) : (
+            <>
+              <a href="/login" className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded">Se connecter</a>
+              <a href="/register" className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap">S'inscrire</a>
+            </>
+          )}
+          <ConnectWallet />
         </div>
       </div>
     </nav>
@@ -69,23 +82,24 @@ function Navbar() {
 }
 
 function Hero() {
+  const { t } = useTranslation();
   return (
     <section
       className="text-center text-white py-24 bg-gradient-to-r from-purple-800 via-purple-600 to-fuchsia-600"
     >
-      <h1 className="text-4xl md:text-6xl font-bold mb-4">Success is shared</h1>
+      <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('welcome')}</h1>
       <div className="space-x-4">
         <a
           href="/shop"
           className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-6 py-2 rounded font-semibold"
         >
-          Explorer les produits
+          {t('explore')}
         </a>
         <a
           href="/register"
           className="bg-white text-purple-700 hover:bg-purple-100 transition-colors px-6 py-2 rounded font-semibold"
         >
-          vendre un produit
+          {t('sell')}
         </a>
       </div>
     </section>
@@ -144,6 +158,7 @@ function HowItWorks() {
 }
 
 function Footer() {
+  const { i18n } = useTranslation();
   return (
     <footer className="bg-[#2C1D59] text-white py-12 mt-12">
       <div className="max-w-7xl mx-auto px-4 space-y-8">
@@ -172,6 +187,12 @@ function Footer() {
             S'inscrire
           </button>
         </form>
+        <div className="flex justify-center">
+          <select onChange={e => i18n.changeLanguage(e.target.value)} className="text-black p-1 rounded">
+            <option value="fr">FR</option>
+            <option value="en">EN</option>
+          </select>
+        </div>
         <p className="text-center text-sm">MintyShirt est propulsé par Story Protocol</p>
       </div>
     </footer>

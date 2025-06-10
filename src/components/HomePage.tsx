@@ -17,6 +17,22 @@ function Navbar() {
     'Marques & Entreprises',
   ];
 
+  const [categoriesOpen, setCategoriesOpen] = React.useState(false);
+  const closeTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleEnter = () => {
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+    }
+    setCategoriesOpen(true);
+  };
+
+  const handleLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setCategoriesOpen(false);
+    }, 200);
+  };
+
   return (
     <nav className="sticky top-0 bg-[#2C1D59] text-white shadow z-10">
       <div className="max-w-7xl mx-auto p-4 space-y-2">
@@ -49,9 +65,15 @@ function Navbar() {
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">Accueil</a>
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">Créateurs</a>
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">Accessoires</a>
-            <div className="relative group">
+            <div
+              className="relative"
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
+            >
               <button className="hover:text-purple-300 whitespace-nowrap">Catégories</button>
-              <div className="absolute left-0 mt-2 hidden group-hover:block bg-white text-gray-900 shadow rounded p-2 space-y-1">
+              <div
+                className={`absolute left-0 mt-2 ${categoriesOpen ? 'block' : 'hidden'} bg-white text-gray-900 shadow rounded p-2 space-y-1`}
+              >
                 {categories.map((cat) => (
                   <a key={cat} href="#" className="block px-2 py-1 hover:bg-purple-100 whitespace-nowrap">
                     {cat}

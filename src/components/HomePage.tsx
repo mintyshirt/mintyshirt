@@ -65,7 +65,6 @@ function Navbar() {
             <a href="#" className="hover:text-purple-300 whitespace-nowrap">Stats</a>
           </div>
         </div>
-        </div>
       </div>
     </nav>
   );

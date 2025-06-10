@@ -126,6 +126,8 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - `CONTRACT_ADDRESSES` : Adresses des smart contracts
    - `TOMO_API_KEY` : Clé API pour l'intégration Tomo.inc
    - `TOMO_API_URL` : URL de l'API Tomo.inc
+   - `COVALENT_API_KEY` : Clé API pour l'intégration Covalent
+   - `COVALENT_API_URL` : URL de l'API Covalent
 
 ## Adresses des Smart Contracts (Testnet Aeneid)
 

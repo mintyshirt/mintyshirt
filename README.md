@@ -124,6 +124,8 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - `DATABASE_URL` : URL de la base de données
    - `IPFS_API_KEY` : Clé API pour IPFS (si applicable)
    - `CONTRACT_ADDRESSES` : Adresses des smart contracts
+   - `TOMO_API_KEY` : Clé API pour l'intégration Tomo.inc
+   - `TOMO_API_URL` : URL de l'API Tomo.inc
 
 ## Adresses des Smart Contracts (Testnet Aeneid)
 

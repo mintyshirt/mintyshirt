@@ -24,10 +24,29 @@ export default function LoginPage() {
     <div className="p-4">
       <h1 className="text-xl font-bold mb-2 text-white">Connexion</h1>
       <form onSubmit={submit} className="space-y-2 max-w-sm">
-        <input className="border p-2 w-full" placeholder="Nom d'utilisateur" value={username} onChange={e => setUsername(e.target.value)} />
-        <input className="border p-2 w-full" type="password" placeholder="Mot de passe" value={password} onChange={e => setPassword(e.target.value)} />
-        <button className="bg-purple-600 text-white px-4 py-2" type="submit">Se connecter</button>
+        <input
+          className="border p-2 w-full"
+          placeholder="Nom d'utilisateur"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          className="border p-2 w-full"
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="bg-purple-600 text-white px-4 py-2" type="submit">
+          Se connecter
+        </button>
       </form>
+      <p className="mt-2 text-white">
+        Pas encore de compte ?{' '}
+        <a href="/register" className="text-purple-300 hover:underline">
+          Créer un compte
+        </a>
+      </p>
       {message && <p className="mt-2 text-white">{message}</p>}
     </div>
   );

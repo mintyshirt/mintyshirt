@@ -34,7 +34,7 @@ export default function Navbar() {
             <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
           </button>
           <Link
-            to="/login"
+            to="/wallet-connect"
             className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded whitespace-nowrap"
           >
             Connecter le portefeuille

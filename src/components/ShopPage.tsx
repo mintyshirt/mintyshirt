@@ -18,12 +18,18 @@ const accessories = [
 ];
 
 export default function ShopPage() {
+  // TODO: replace hardcoded language logic with context/i18n when available
+  const language = 'fr';
+  const title = language === 'fr' ? 'La Boutique' : 'Shop';
   return (
     <div className="font-sans">
       <Navbar />
       <h1 className="text-3xl font-bold text-white max-w-7xl mx-auto mt-6 px-4">
-        La Boutique/shop
+        {title}
       </h1>
+      <p className="text-white max-w-7xl mx-auto mt-2 px-4">
+        Trouvez le merch de vos créateurs préférés et découvrez de nouvelles inspirations.
+      </p>
       <div className="flex max-w-7xl mx-auto mt-4 px-4 space-x-6">
         <aside className="w-48">
           <h2 className="font-bold mb-2 text-white">Accessoires</h2>

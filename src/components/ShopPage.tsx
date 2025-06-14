@@ -9,7 +9,12 @@ const accessories = [
   { name: 'Tote bags', path: 'tote-bags' },
   { name: 'Posters', path: 'posters' },
   { name: 'Stickers', path: 'stickers' },
-  { name: 'Autres produits disponibles sur gelato', path: 'autres' },
+  { name: 'Coques de téléphone', path: 'coques-telephone' },
+  { name: 'Mugs', path: 'mugs' },
+  { name: 'Calendriers muraux', path: 'calendriers-muraux' },
+  { name: 'Albums photo', path: 'albums-photo' },
+  { name: 'Toiles', path: 'toiles' },
+  { name: 'Cartes personnalisées', path: 'cartes-personnalisees' },
 ];
 
 export default function ShopPage() {

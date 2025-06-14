@@ -11,6 +11,7 @@ import RoyaltyTokensPage from './components/RoyaltyTokensPage';
 import TokenSwapPage from './components/TokenSwapPage';
 import DesignHubPage from './components/DesignHubPage';
 import StatsPage from './components/StatsPage';
+import WalletConnectPage from './components/WalletConnectPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/royalty-tokens" element={<RoyaltyTokensPage />} />
         <Route path="/token-swap" element={<TokenSwapPage />} />
         <Route path="/design-hub" element={<DesignHubPage />} />
+        <Route path="/wallet-connect" element={<WalletConnectPage />} />
         <Route path="/stats" element={<StatsPage />} />
       </Routes>
     </BrowserRouter>

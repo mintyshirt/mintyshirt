@@ -24,6 +24,7 @@ function App() {
         <Route path="/creators" element={<CreatorsPage />} />
         <Route path="/creators/:slug" element={<CreatorPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/categories/:slug" element={<CategoriesPage />} />
         <Route path="/royalty-tokens" element={<RoyaltyTokensPage />} />
         <Route path="/token-swap" element={<TokenSwapPage />} />
         <Route path="/design-hub" element={<DesignHubPage />} />

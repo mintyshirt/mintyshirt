@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 import { categories } from '../lib/categories';
 
 export default function CategoriesPage() {
@@ -22,6 +23,7 @@ export default function CategoriesPage() {
             ))}
           </ul>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -37,6 +39,7 @@ export default function CategoriesPage() {
         </h1>
         <p>Contenu pour la catégorie {category ? category.name : slug} à venir.</p>
       </div>
+      <Footer />
     </div>
   );
 }

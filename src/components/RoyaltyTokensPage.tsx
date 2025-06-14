@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import RoyaltyTokenExchange from '../RoyaltyTokenExchange';
+import Footer from './Footer';
 
 export default function RoyaltyTokensPage() {
   return (
@@ -10,6 +11,7 @@ export default function RoyaltyTokensPage() {
         <h1 className="text-3xl font-bold">Royalty Tokens</h1>
         <RoyaltyTokenExchange />
       </div>
+      <Footer />
     </div>
   );
 }

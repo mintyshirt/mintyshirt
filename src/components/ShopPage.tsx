@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import React from 'react';
+import Footer from './Footer';
 
 const accessories = [
   { name: 'T-shirts', path: 't-shirts' },
@@ -47,6 +48,7 @@ export default function ShopPage() {
           <p>Sélectionnez un type d&apos;accessoire pour afficher les produits.</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

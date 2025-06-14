@@ -59,7 +59,12 @@ export default function Navbar() {
           </a>
         </div>
         <div className="flex items-center space-x-6 pt-2">
-          <span className="font-bold text-xl whitespace-nowrap">MintyShirt</span>
+          <a
+            href="/"
+            className="font-bold text-2xl whitespace-nowrap mr-8"
+          >
+            MintyShirt
+          </a>
           <div className="hidden md:flex space-x-6 items-center">
             <a href="/" className="hover:text-purple-300 whitespace-nowrap">Accueil</a>
             <a href="/shop" className="hover:text-purple-300 whitespace-nowrap">Boutique</a>

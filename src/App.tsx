@@ -10,6 +10,7 @@ import CategoriesPage from './components/CategoriesPage';
 import RoyaltyTokensPage from './components/RoyaltyTokensPage';
 import TokenSwapPage from './components/TokenSwapPage';
 import DesignHubPage from './components/DesignHubPage';
+import IpAssetPage from './components/IpAssetPage';
 import StatsPage from './components/StatsPage';
 import WalletConnectPage from './components/WalletConnectPage';
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/royalty-tokens" element={<RoyaltyTokensPage />} />
         <Route path="/token-swap" element={<TokenSwapPage />} />
         <Route path="/design-hub" element={<DesignHubPage />} />
+        <Route path="/design-hub/:id" element={<IpAssetPage />} />
         <Route path="/wallet-connect" element={<WalletConnectPage />} />
         <Route path="/stats" element={<StatsPage />} />
       </Routes>

@@ -4,18 +4,14 @@ export interface Category {
 }
 
 export const categories: Category[] = [
-  { name: 'Créateurs de contenu', slug: 'createurs-de-contenu' },
-  { name: 'Musiciens', slug: 'musiciens' },
-  { name: 'Jeux vidéo', slug: 'jeux-video' },
-  { name: 'Manga', slug: 'manga' },
-  { name: 'BD & Animés', slug: 'bd-animes' },
+  { name: 'Mangas', slug: 'mangas' },
+  { name: 'Musique', slug: 'musique' },
+  { name: 'Jeux vidéos', slug: 'jeux-videos' },
+  { name: 'Art visuel', slug: 'art-visuel' },
   { name: 'Crypto', slug: 'crypto' },
-  { name: 'NFT', slug: 'nft' },
   { name: 'Clubs sportifs', slug: 'clubs-sportifs' },
+  { name: 'NFT', slug: 'nft' },
   { name: 'Séries', slug: 'series' },
   { name: 'Films', slug: 'films' },
-  { name: 'Art visuel', slug: 'art-visuel' },
-  { name: 'Mode', slug: 'mode' },
-  { name: 'Marques & entreprises', slug: 'marques-entreprises' },
-  { name: 'Autres', slug: 'autres' },
+  { name: 'Comics/fantastique', slug: 'comics-fantastique' },
 ];

@@ -9,6 +9,7 @@ import CreatorPage from './components/CreatorPage';
 import CategoriesPage from './components/CategoriesPage';
 import RoyaltyTokensPage from './components/RoyaltyTokensPage';
 import TokenSwapPage from './components/TokenSwapPage';
+import TokenDetailPage from './components/TokenDetailPage';
 import DesignHubPage from './components/DesignHubPage';
 import IpAssetPage from './components/IpAssetPage';
 import StatsPage from './components/StatsPage';
@@ -28,7 +29,8 @@ function App() {
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/categories/:slug" element={<CategoriesPage />} />
         <Route path="/royalty-tokens" element={<RoyaltyTokensPage />} />
-        <Route path="/token-swap" element={<TokenSwapPage />} />
+        <Route path="/tokenswap" element={<TokenSwapPage />} />
+        <Route path="/tokenswap/:id" element={<TokenDetailPage />} />
         <Route path="/design-hub" element={<DesignHubPage />} />
         <Route path="/design-hub/:id" element={<IpAssetPage />} />
         <Route path="/wallet-connect" element={<WalletConnectPage />} />

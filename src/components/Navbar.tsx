@@ -78,7 +78,7 @@ export default function Navbar() {
               </div>
             </div>
             <Link to="/royalty-tokens" className="hover:text-purple-300 whitespace-nowrap">Royalty Tokens</Link>
-            <Link to="/token-swap" className="hover:text-purple-300 whitespace-nowrap">TokenSwap</Link>
+            <Link to="/tokenswap" className="hover:text-purple-300 whitespace-nowrap">TokenSwap</Link>
             <Link to="/design-hub" className="hover:text-purple-300 whitespace-nowrap">DesignHub</Link>
             <Link to="/stats" className="hover:text-purple-300 whitespace-nowrap">Stats</Link>
           </div>

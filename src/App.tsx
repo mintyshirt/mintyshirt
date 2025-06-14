@@ -22,7 +22,7 @@ function App() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/shop/:category" element={<AccessoryCategoryPage />} />
         <Route path="/creators" element={<CreatorsPage />} />
-        <Route path="/creators/:name" element={<CreatorPage />} />
+        <Route path="/creators/:slug" element={<CreatorPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/royalty-tokens" element={<RoyaltyTokensPage />} />
         <Route path="/token-swap" element={<TokenSwapPage />} />

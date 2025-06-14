@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const categories = [
@@ -15,6 +16,14 @@ export default function Navbar() {
     'Collections de NFTs',
     'Marques & Entreprises',
   ];
+
+  const slugify = (str: string) =>
+    str
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
 
   const [categoriesOpen, setCategoriesOpen] = React.useState(false);
   const closeTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -45,30 +54,30 @@ export default function Navbar() {
             <span className="text-xl">🛒</span>
             <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
           </button>
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded whitespace-nowrap"
           >
             Connecter le portefeuille
-          </a>
-          <a
-            href="/login"
+          </Link>
+          <Link
+            to="/login"
             className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap"
           >
             Connexion
-          </a>
+          </Link>
         </div>
         <div className="flex items-center space-x-6 pt-2">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="font-bold text-2xl whitespace-nowrap mr-8"
           >
             MintyShirt
-          </a>
+          </Link>
           <div className="hidden md:flex space-x-6 items-center">
-            <a href="/" className="hover:text-purple-300 whitespace-nowrap">Accueil</a>
-            <a href="/shop" className="hover:text-purple-300 whitespace-nowrap">Boutique</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">Créateurs</a>
+            <Link to="/" className="hover:text-purple-300 whitespace-nowrap">Accueil</Link>
+            <Link to="/shop" className="hover:text-purple-300 whitespace-nowrap">Boutique</Link>
+            <Link to="/creators" className="hover:text-purple-300 whitespace-nowrap">Créateurs</Link>
             <div
               className="relative"
               onMouseEnter={handleEnter}
@@ -79,16 +88,20 @@ export default function Navbar() {
                 className={`absolute left-0 mt-2 ${categoriesOpen ? 'block' : 'hidden'} bg-white text-gray-900 shadow rounded p-2 space-y-1`}
               >
                 {categories.map((cat) => (
-                  <a key={cat} href="#" className="block px-2 py-1 hover:bg-purple-100 whitespace-nowrap">
+                  <Link
+                    key={cat}
+                    to={`/categories/${slugify(cat)}`}
+                    className="block px-2 py-1 hover:bg-purple-100 whitespace-nowrap"
+                  >
                     {cat}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">Royalty Tokens</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">TokenSwap</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">DesignHub</a>
-            <a href="#" className="hover:text-purple-300 whitespace-nowrap">Stats</a>
+            <Link to="/royalty-tokens" className="hover:text-purple-300 whitespace-nowrap">Royalty Tokens</Link>
+            <Link to="/tokenswap" className="hover:text-purple-300 whitespace-nowrap">TokenSwap</Link>
+            <Link to="/designhub" className="hover:text-purple-300 whitespace-nowrap">DesignHub</Link>
+            <Link to="/stats" className="hover:text-purple-300 whitespace-nowrap">Stats</Link>
           </div>
         </div>
       </div>

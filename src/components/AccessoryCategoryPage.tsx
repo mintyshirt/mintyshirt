@@ -17,9 +17,12 @@ interface Product {
 const products: Product[] = [
   { id: 1, name: 'T-shirt Alpha', creator: 'Alice', price: 0.1, category: 't-shirts', popularity: 80, sales: 120, createdAt: 3, activity: 5 },
   { id: 2, name: 'T-shirt Beta', creator: 'Bob', price: 0.12, category: 't-shirts', popularity: 70, sales: 80, createdAt: 2, activity: 4 },
-  { id: 3, name: 'Sweat Gamma', creator: 'Clara', price: 0.2, category: 'sweats', popularity: 90, sales: 150, createdAt: 1, activity: 6 },
+  { id: 3, name: 'Sweat Gamma', creator: 'Clara', price: 0.2, category: 'sweatshirts', popularity: 90, sales: 150, createdAt: 1, activity: 6 },
   { id: 4, name: 'Casquette Delta', creator: 'Dan', price: 0.05, category: 'casquettes', popularity: 60, sales: 60, createdAt: 5, activity: 2 },
-  { id: 5, name: 'Mug Epsilon', creator: 'Eve', price: 0.03, category: 'mugs', popularity: 50, sales: 40, createdAt: 4, activity: 1 },
+  { id: 5, name: 'Tote Bag Epsilon', creator: 'Eve', price: 0.03, category: 'tote-bags', popularity: 50, sales: 40, createdAt: 4, activity: 1 },
+  { id: 6, name: 'Poster Zeta', creator: 'Fiona', price: 0.02, category: 'posters', popularity: 40, sales: 30, createdAt: 6, activity: 1 },
+  { id: 7, name: 'Sticker Eta', creator: 'George', price: 0.01, category: 'stickers', popularity: 35, sales: 25, createdAt: 7, activity: 1 },
+  { id: 8, name: 'Produit Gelato', creator: 'Hannah', price: 0.05, category: 'autres', popularity: 20, sales: 10, createdAt: 8, activity: 1 },
 ];
 
 export default function AccessoryCategoryPage() {

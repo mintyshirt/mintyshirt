@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaYoutube, FaTiktok, FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
 import Navbar from './Navbar';
 
@@ -9,12 +10,12 @@ function Hero() {
     >
       <h1 className="text-4xl md:text-6xl font-bold mb-4">Success is shared</h1>
       <div className="space-x-4">
-        <a
-          href="/shop"
+        <Link
+          to="/shop"
           className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-6 py-2 rounded font-semibold"
         >
           Explorer les produits
-        </a>
+        </Link>
         <a
           href="/register"
           className="bg-white text-purple-700 hover:bg-purple-100 transition-colors px-6 py-2 rounded font-semibold"

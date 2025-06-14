@@ -4,17 +4,22 @@ import React from 'react';
 
 const accessories = [
   { name: 'T-shirts', path: 't-shirts' },
-  { name: 'Sweats', path: 'sweats' },
+  { name: 'Sweatshirts', path: 'sweatshirts' },
   { name: 'Casquettes', path: 'casquettes' },
-  { name: 'Mugs', path: 'mugs' },
+  { name: 'Tote bags', path: 'tote-bags' },
   { name: 'Posters', path: 'posters' },
+  { name: 'Stickers', path: 'stickers' },
+  { name: 'Autres produits disponibles sur gelato', path: 'autres' },
 ];
 
 export default function ShopPage() {
   return (
     <div className="font-sans">
       <Navbar />
-      <div className="flex max-w-7xl mx-auto mt-6 px-4 space-x-6">
+      <h1 className="text-3xl font-bold text-white max-w-7xl mx-auto mt-6 px-4">
+        La Boutique/shop
+      </h1>
+      <div className="flex max-w-7xl mx-auto mt-4 px-4 space-x-6">
         <aside className="w-48">
           <h2 className="font-bold mb-2 text-white">Accessoires</h2>
           <ul className="space-y-1">

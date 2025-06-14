@@ -115,7 +115,89 @@ Le dashboard créateur offre une vue complète et intuitive de toutes les activi
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 3. DesignHub
+## 3. Page d'un Créateur Spécifique
+
+Cette section décrit l'interface dédiée à un créateur individuel, accessible depuis la page Créateurs ou via un lien direct.
+
+**En-tête de page**
+- Logo MintyShirt
+- Navbar sticky : Accueil | Accessoires | Catégories | Royalty Tokens | TokenSwap | Stats | DesignHub | Créateurs
+- Switch de langue [EN / FR]
+- Connexion / Création de compte
+
+**Section Profil du Créateur**
+- Photo de couverture personnalisable
+- Logo / Avatar du créateur
+- Nom du créateur
+- Catégorie : Musicien, Manga, Art visuel...
+- Réseaux sociaux : icônes cliquables (Twitter, Instagram, Discord, etc.)
+- Boutons d'action :
+  - Voir la boutique → lien vers les produits merch du créateur
+  - Voir les Royalty Tokens → scroll vers la section tokens de la page
+  - Rejoindre le groupe privé (uniquement si l'utilisateur détient un token)
+
+**Section "À Propos du Créateur"**
+- Texte court présentant son univers artistique, ses inspirations, ses projets à venir.
+- Option : "Afficher plus" si le texte est long.
+
+**Section "Designs et Propriétés Intellectuelles"**
+- Titre : Mes Designs
+- Filtres et options d'affichage :
+  - Trier par : Nouveaux, Populaires, En licence, Remixés
+  - Filtres : Disponible sur merch / Disponible en licence / IP associé
+- Affichage en grille des designs :
+  - Image du design
+  - Titre du design
+  - Tags associés
+  - IP Asset associé (lien vers la page IP si applicable)
+  - Boutons : Voir – Proposer une collaboration
+
+**Section "Royalty Tokens"**
+- Titre : Mes Royalty Tokens
+- Présentation des tokens émis par le créateur
+- Affichage en tableau ou cartes :
+  - Nom Token
+  - IP lié (avec lien vers la page de l'IP)
+  - Prix initial
+  - % Royalties (part de revenus redistribuée)
+  - Vente en cours (indicateur visuel)
+  - Lien TokenSwap (acheter/vendre ce token)
+
+**Section "Collaborations"**
+- Titre : Mes Collaborations
+- Designs ou IP co-créés avec d'autres artistes
+- Indication des partenaires et lien vers les IP Assets co-créés
+- Statistiques si disponibles : ventes, forks, remix...
+
+**Section "Gestion des IP" (pour le créateur connecté)**
+- Titre : Mes Actifs IP
+- Liste des IP Assets avec titre, image et statut (actif/licencié/remixé)
+- Bouton : Créer un nouvel IP Asset
+- Filtres : Actif, Forké, Loué, Remixé
+- IP disponibles à la licence ou au remix
+- Voir les forks créés à partir de ses designs
+- Notifications si demandes en attente
+
+**Section "Statistiques Générales du Créateur"**
+- Titre : Aperçu de mes performances
+- Nombre de ventes total
+- Revenus générés
+- Nombre de tokens en circulation
+- Nombre de fans détenteurs
+- Graphique de performance
+
+**Section "Avantages Communauté"**
+- Titre : Vos Avantages Exclusifs
+- Lien vers le groupe privé MintyShirt (chat)
+- Avantages disponibles : réductions, affiliation, accès à des contenus
+- Accès au groupe privé si l'utilisateur détient le token
+
+**Pied de page**
+- Liens utiles (CGV, Politique de confidentialité, À propos, Contact, Moyens de paiement, Programme d’affiliation Token-Gated)
+- Icônes de réseaux sociaux
+
+
+## 4. DesignHub
 
 L'interface DesignHub permet d'explorer, de licencier et de remixer les designs protégés par IP.
 
@@ -164,7 +246,7 @@ L'interface DesignHub permet d'explorer, de licencier et de remixer les designs 
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 4. Page Détaillée d'un IP Asset
+## 5. Page Détaillée d'un IP Asset
 
 Cette page présente les détails complets d'un actif IP, avec ses conditions de licence et options.
 
@@ -228,7 +310,7 @@ Cette page présente les détails complets d'un actif IP, avec ses conditions de
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 5. TokenSwap
+## 6. TokenSwap
 
 L'interface TokenSwap permet d'explorer et d'échanger les Royalty Tokens.
 
@@ -276,7 +358,7 @@ L'interface TokenSwap permet d'explorer et d'échanger les Royalty Tokens.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 6. Groupe de Chat Privé
+## 7. Groupe de Chat Privé
 
 L'interface du groupe de chat privé token-gated, inspirée de Telegram.
 
@@ -334,7 +416,7 @@ L'interface du groupe de chat privé token-gated, inspirée de Telegram.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 7. Onglet Affiliation (Dashboard Créateur)
+## 8. Onglet Affiliation (Dashboard Créateur)
 
 L'interface de gestion des affiliations pour les créateurs.
 
@@ -403,7 +485,7 @@ L'interface de gestion des affiliations pour les créateurs.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 8. Onglet Affiliation (Dashboard Client)
+## 9. Onglet Affiliation (Dashboard Client)
 
 L'interface de gestion des affiliations pour les clients/fans.
 
@@ -471,7 +553,7 @@ L'interface de gestion des affiliations pour les clients/fans.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 9. Formulaire de Whitelisting (Vente Privée)
+## 10. Formulaire de Whitelisting (Vente Privée)
 
 L'interface du formulaire de whitelisting pour les créateurs.
 

@@ -60,7 +60,47 @@ La page d'accueil est conçue pour offrir une expérience immersive et intuitive
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 2. Dashboard Créateur
+## 2. Page "Créateurs" (Navbar)
+
+Cette page présente l'ensemble des créateurs classés par popularité et activité récente.
+
+### En-tête de page
+- Logo MintyShirt
+- Navbar sticky : Accueil | Accessoires | Catégories | Royalty Tokens | TokenSwap | Stats | DesignHub | Créateurs
+- Switch de langue [EN / FR]
+- Connexion / Création de compte
+
+### Titre de la page
+- **Nos Créateurs**
+- Slogan : Découvrez les talents qui donnent vie à MintyShirt.
+
+### Barre de recherche et filtres
+- Barre de recherche avec placeholder : "Rechercher un créateur par nom ou catégorie..."
+- Filtres (dropdown) :
+  - Trier par : [Plus Populaires] [Nouveaux Ajouts] [Plus Actifs (ventes merch)] [Plus Actifs (échanges tokens)] [Nombre d'IPs]
+  - Catégories : [Mangas] [Séries] [Films] [Jeux Vidéo] [Musiciens] [Crypto] [NFT] [Art visuel] [Clubs Sportifs] [Comics/Fantastiques]
+  - Pays : sélection déroulante
+
+### Grille des créateurs
+- Affichage en grille responsive de cartes de créateurs selon les filtres.
+
+#### Contenu d'une carte
+- Logo / Avatar du créateur
+- Nom du créateur / Handle
+- Catégorie principale
+- Indicateurs clés :
+  - Nombre d'IP Assets
+  - Royalty Tokens émis
+  - Volume TokenSwap (30j)
+  - Revenus merch (30j)
+  - Membres groupe privé
+- Bouton : Voir la page du créateur
+
+### Notes de développement
+- Les données affichées proviennent des statistiques publiques des créateurs.
+- Les chiffres sont actualisés toutes les 24h.
+
+## 3. Dashboard Créateur
 
 Le dashboard créateur offre une vue complète et intuitive de toutes les activités et fonctionnalités disponibles pour les créateurs.
 
@@ -115,7 +155,7 @@ Le dashboard créateur offre une vue complète et intuitive de toutes les activi
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 3. Page d'un Créateur Spécifique
+## 4. Page d'un Créateur Spécifique
 
 Cette section décrit l'interface dédiée à un créateur individuel, accessible depuis la page Créateurs ou via un lien direct.
 
@@ -197,7 +237,7 @@ Cette section décrit l'interface dédiée à un créateur individuel, accessibl
 - Icônes de réseaux sociaux
 
 
-## 4. DesignHub
+## 5. DesignHub
 
 L'interface DesignHub permet d'explorer, de licencier et de remixer les designs protégés par IP.
 
@@ -246,7 +286,7 @@ L'interface DesignHub permet d'explorer, de licencier et de remixer les designs 
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 5. Page Détaillée d'un IP Asset
+## 6. Page Détaillée d'un IP Asset
 
 Cette page présente les détails complets d'un actif IP, avec ses conditions de licence et options.
 
@@ -310,7 +350,7 @@ Cette page présente les détails complets d'un actif IP, avec ses conditions de
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 6. TokenSwap
+## 7. TokenSwap
 
 L'interface TokenSwap permet d'explorer et d'échanger les Royalty Tokens.
 
@@ -358,7 +398,7 @@ L'interface TokenSwap permet d'explorer et d'échanger les Royalty Tokens.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 7. Groupe de Chat Privé
+## 8. Groupe de Chat Privé
 
 L'interface du groupe de chat privé token-gated, inspirée de Telegram.
 
@@ -416,7 +456,7 @@ L'interface du groupe de chat privé token-gated, inspirée de Telegram.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 8. Onglet Affiliation (Dashboard Créateur)
+## 9. Onglet Affiliation (Dashboard Créateur)
 
 L'interface de gestion des affiliations pour les créateurs.
 
@@ -485,7 +525,7 @@ L'interface de gestion des affiliations pour les créateurs.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 9. Onglet Affiliation (Dashboard Client)
+## 10. Onglet Affiliation (Dashboard Client)
 
 L'interface de gestion des affiliations pour les clients/fans.
 
@@ -553,7 +593,7 @@ L'interface de gestion des affiliations pour les clients/fans.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-## 10. Formulaire de Whitelisting (Vente Privée)
+## 11. Formulaire de Whitelisting (Vente Privée)
 
 L'interface du formulaire de whitelisting pour les créateurs.
 

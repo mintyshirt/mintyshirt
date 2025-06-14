@@ -45,7 +45,7 @@ export default function TokenSwapPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-4">
         <h1 className="text-3xl font-bold">TokenSwap - Marché secondaire des Royalty Tokens</h1>
-
+        <p>Échangez vos tokens ici.</p>
         <div className="bg-white/10 backdrop-blur p-4 rounded border border-purple-800 space-y-2">
           <input
             type="text"

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function DesignHubPage() {
   return (
@@ -9,6 +10,7 @@ export default function DesignHubPage() {
         <h1 className="text-3xl font-bold mb-4">Design Hub</h1>
         <p>Espace de création et de gestion des designs.</p>
       </div>
+      <Footer />
     </div>
   );
 }

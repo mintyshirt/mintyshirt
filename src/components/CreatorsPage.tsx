@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 interface Creator {
   name: string;
@@ -32,6 +33,7 @@ export default function CreatorsPage() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

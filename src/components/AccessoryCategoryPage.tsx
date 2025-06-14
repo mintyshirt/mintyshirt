@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 interface Product {
   id: number;
@@ -73,6 +74,7 @@ export default function AccessoryCategoryPage() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

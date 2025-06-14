@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function CreatorPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -12,6 +13,7 @@ export default function CreatorPage() {
         <h1 className="text-3xl font-bold capitalize">{slug}</h1>
         <p>Détails du créateur {slug} à venir.</p>
       </div>
+      <Footer />
     </div>
   );
 }

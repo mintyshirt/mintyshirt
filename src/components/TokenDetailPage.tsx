@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { tokens } from '../lib/tokens';
+import { FaCheck } from 'react-icons/fa';
 
 export default function TokenDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -42,9 +43,12 @@ export default function TokenDetailPage() {
               </div>
               <div className="bg-white/10 backdrop-blur border border-purple-800 rounded p-4">
                 <div className="font-semibold mb-2">Avantages associés</div>
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="space-y-1">
                   {token.perks.map(p => (
-                    <li key={p}>{p}</li>
+                    <li key={p} className="flex items-center">
+                      <FaCheck className="text-green-500 mr-2" />
+                      <span>{p}</span>
+                    </li>
                   ))}
                 </ul>
               </div>

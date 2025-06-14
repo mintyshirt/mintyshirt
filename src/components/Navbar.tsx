@@ -1,29 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { categories } from '../lib/categories';
 
 export default function Navbar() {
-  const categories = [
-    'Créateurs de contenu',
-    'Musiciens',
-    'Mangas',
-    'BD & Animés',
-    'Jeux vidéo',
-    'Séries',
-    'Films',
-    'Art visuel',
-    'Clubs sportifs',
-    'Crypto',
-    'Collections de NFTs',
-    'Marques & Entreprises',
-  ];
-
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
 
   const [categoriesOpen, setCategoriesOpen] = React.useState(false);
   const closeTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -89,11 +68,11 @@ export default function Navbar() {
               >
                 {categories.map((cat) => (
                   <Link
-                    key={cat}
-                    to={`/categories/${slugify(cat)}`}
+                    key={cat.slug}
+                    to={`/categories/${cat.slug}`}
                     className="block px-2 py-1 hover:bg-purple-100 whitespace-nowrap"
                   >
-                    {cat}
+                    {cat.name}
                   </Link>
                 ))}
               </div>

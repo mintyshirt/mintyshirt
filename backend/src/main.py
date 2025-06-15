@@ -3,7 +3,7 @@ import sys
 # DON'T CHANGE THIS !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, jsonify
 from flask_cors import CORS
 from src.models.user import db
 from src.routes.user import user_bp
@@ -23,6 +23,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 with app.app_context():
     db.create_all()
+
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Simple health check endpoint."""
+    return jsonify({'status': 'ok'})
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

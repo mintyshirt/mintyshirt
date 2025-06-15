@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { categories } from '../lib/categories';
 
 interface CreatorStats {
   slug: string;
@@ -77,19 +78,6 @@ const creators: CreatorStats[] = [
     groupMembers: 75,
     joinedAt: '2023-10-05',
   },
-];
-
-const categories = [
-  'Mangas',
-  'Séries',
-  'Films',
-  'Jeux Vidéo',
-  'Musiciens',
-  'Crypto',
-  'NFT',
-  'Art visuel',
-  'Clubs sportifs',
-  'Comics/Fantastiques',
 ];
 
 const countries = Array.from(new Set(creators.map((c) => c.country)));
@@ -193,9 +181,9 @@ export default function StatsPage() {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">Catégories</option>
-            {categories.map((c) => (
-              <option key={c} value={c}>
-                {c}
+            {categories.map((cat) => (
+              <option key={cat.slug} value={cat.name}>
+                {cat.name}
               </option>
             ))}
           </select>

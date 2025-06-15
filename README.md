@@ -121,6 +121,9 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - Type : Python
    - Build command : `pip install -r requirements.txt`
    - Start command : `python -m flask run --host=0.0.0.0 --port=$PORT`
+   - Type : Node
+   - Build command : `npm install && npm run build`
+   - Start command : `node server.js`
 3. Configurer les variables d'environnement :
    - `FLASK_ENV` : production
    - `SECRET_KEY` : clé secrète pour JWT

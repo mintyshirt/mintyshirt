@@ -9,6 +9,11 @@ import {
   mockMerchProducts,
 } from '../data/mockData';
 
+function getDesignImage(designId: string): string {
+  const design = mockDesigns.find((d) => d.id === designId);
+  return design ? design.imageUrl : 'https://via.placeholder.com/300';
+}
+
 export default function CreatorPage() {
   const { slug } = useParams<{ slug: string }>();
   const creator = mockCreators.find(
@@ -81,6 +86,11 @@ export default function CreatorPage() {
                 key={product.id}
                 className="bg-white/10 border border-purple-800 rounded p-2 text-center"
               >
+                <img
+                  src={getDesignImage(product.designId)}
+                  alt={product.name}
+                  className="w-full h-32 object-cover mb-2"
+                />
                 <p className="font-semibold">{product.name}</p>
                 <p className="text-sm">
                   {product.price} {product.currency}

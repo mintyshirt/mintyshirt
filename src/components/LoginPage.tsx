@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_BASE } from '../lib/api';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -7,7 +8,7 @@ export default function LoginPage() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch('/api/login', {
+    const res = await fetch(`${API_BASE}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })

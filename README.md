@@ -109,6 +109,9 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - Publish directory : `dist`
 3. Configurer les variables d'environnement :
    - `VITE_API_URL` : URL de l'API backend
+     - Le frontend utilise l'utilitaire `API_BASE` (voir `src/lib/api.ts`) qui se
+       base sur cette variable. Si elle n'est pas renseignée, `/api` sera
+       utilisé par défaut.
    - `VITE_CONTRACT_REGISTRY` : Adresse du contrat MintyShirtRegistry
    - `VITE_CONTRACT_LICENSE` : Adresse du contrat LicenseManager
    - `VITE_CONTRACT_REVENUE` : Adresse du contrat RevenueDistributor

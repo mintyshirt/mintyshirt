@@ -57,6 +57,10 @@ La page d'accueil vous présente les fonctionnalités principales de MintyShirt 
 2. Autorisez la connexion dans votre extension MetaMask
 3. Si vous n'êtes pas sur le réseau Story Aeneid Testnet, cliquez sur "Changer de réseau"
 
+### Sélection du Rôle
+
+Après votre connexion ou inscription, une page intermédiaire intitulée **ChooseRolePage** vous permet de choisir de naviguer en tant que *fan* ou *creator*. Ce choix est enregistré dans votre navigateur et peut être modifié à tout moment grâce au bouton présent dans la barre de navigation.
+
 ### Devenir Créateur
 
 1. Cliquez sur "Devenir Créateur" sur la page d'accueil

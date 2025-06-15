@@ -1,43 +1,40 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { API_BASE } from '../lib/api';
 
+type Role = 'fan' | 'creator';
+
 interface UserInfo {
   id: number;
   username: string;
   email: string;
-  role?: string;
+  role: Role;
 }
 
 interface AuthContextType {
   user: UserInfo | null;
-  role: string | null;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
+  setRole: (role: Role) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
-  role: null,
   login: async () => {},
   logout: () => {},
+  setRole: () => {},
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserInfo | null>(null);
-  const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem('authUser');
-    const storedRole = localStorage.getItem('authRole');
     if (stored) {
       try {
         setUser(JSON.parse(stored));
       } catch {
         /* ignore */
       }
-    }
-    if (storedRole) {
-      setRole(storedRole);
     }
   }, []);
 
@@ -51,30 +48,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       throw new Error('Invalid credentials');
     }
     const data = await res.json();
-    if (data.token) {
-      localStorage.setItem('authToken', data.token);
-    }
-    localStorage.setItem('authUser', JSON.stringify(data));
-    if (data.role) {
-      localStorage.setItem('authRole', data.role);
-      setRole(data.role);
-    } else {
-      setRole(null);
-      localStorage.removeItem('authRole');
-    }
-    setUser(data);
+    const userData: UserInfo = {
+      id: data.id,
+      username: data.username,
+      email: data.email,
+      role: data.role || 'fan',
+    };
+    localStorage.setItem('authUser', JSON.stringify(userData));
+    setUser(userData);
   };
 
   const logout = () => {
-    localStorage.removeItem('authToken');
     localStorage.removeItem('authUser');
-    localStorage.removeItem('authRole');
     setUser(null);
-    setRole(null);
+  };
+
+  const setRole = (newRole: Role) => {
+    if (!user) return;
+    const updated = { ...user, role: newRole };
+    setUser(updated);
+    localStorage.setItem('authUser', JSON.stringify(updated));
   };
 
   return (
-    <AuthContext.Provider value={{ user, role, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, setRole }}>
       {children}
     </AuthContext.Provider>
   );

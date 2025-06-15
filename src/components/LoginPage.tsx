@@ -25,13 +25,13 @@ export default function LoginPage() {
       <h1 className="text-xl font-bold mb-2 text-white">Connexion</h1>
       <form onSubmit={submit} className="space-y-2 max-w-sm">
         <input
-          className="border p-2 w-full"
+          className="border p-2 w-full text-black"
           placeholder="Nom d'utilisateur"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          className="border p-2 w-full"
+          className="border p-2 w-full text-black"
           type="password"
           placeholder="Mot de passe"
           value={password}

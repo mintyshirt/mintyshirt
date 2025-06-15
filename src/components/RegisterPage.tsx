@@ -25,9 +25,25 @@ export default function RegisterPage() {
     <div className="p-4">
       <h1 className="text-xl font-bold mb-2 text-white">Inscription</h1>
       <form onSubmit={submit} className="space-y-2 max-w-sm">
-        <input className="border p-2 w-full" placeholder="Nom d'utilisateur" value={username} onChange={e => setUsername(e.target.value)} />
-        <input className="border p-2 w-full" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input className="border p-2 w-full" type="password" placeholder="Mot de passe" value={password} onChange={e => setPassword(e.target.value)} />
+        <input
+          className="border p-2 w-full text-black bg-white"
+          placeholder="Nom d'utilisateur"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          className="border p-2 w-full text-black bg-white"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className="border p-2 w-full text-black bg-white"
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button className="bg-purple-600 text-white px-4 py-2" type="submit">S'inscrire</button>
       </form>
       {message && <p className="mt-2 text-white">{message}</p>}

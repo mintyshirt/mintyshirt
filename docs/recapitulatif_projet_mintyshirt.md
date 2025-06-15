@@ -23,16 +23,17 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
 
 ### Frontend
 - `/src/contexts/Web3Context.tsx` : Contexte pour la connexion wallet et l'interaction blockchain
-- `/src/contexts/AuthContext.tsx` : Contexte pour l'authentification utilisateur
+- `/src/contexts/AuthContext.tsx` : Authentification et gestion du rôle utilisateur
+- `/src/lib/api.ts` : Base d'URL pour l'API
 - `/src/lib/abis/` : ABIs des smart contracts
-- `/src/components/` : Composants UI (WalletConnectButton, CreatorRegistration, DesignUpload, etc.)
-- `/src/services/` : Services pour l'API backend et l'authentification
+- `/src/components/` : Pages et composants UI (Navbar, ChooseRolePage, UploadDesignPage, etc.)
+- `/src/services/registry.ts` : Appels au contrat MintyShirtRegistry
 
 ### Backend
-- `/src/main.py` : Point d'entrée de l'API Flask
-- `/src/routes/` : Routes API pour les utilisateurs, designs, etc.
-- `/src/models/` : Modèles de données
-- `/src/services/` : Services pour IPFS, blockchain, etc.
+- `/backend/src/main.py` : Point d'entrée de l'API Flask
+- `/backend/src/routes/` : Routes API pour les utilisateurs, designs, etc.
+- `/backend/src/models/` : Modèles de données
+- `/backend/src/services/` : Services pour IPFS, blockchain, etc.
 
 ### Smart Contracts
 - `MintyShirtRegistry.sol` : Registre principal des designs et créateurs
@@ -63,6 +64,8 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
 5. **Authentification Utilisateur**
    - Connexion avec email/mot de passe
    - Connexion avec wallet et signature
+   - Choix initial du rôle *fan* ou *creator* via `ChooseRolePage`
+   - Bascule de rôle possible depuis la barre de navigation
 
 ## Fonctionnalités à Implémenter
 

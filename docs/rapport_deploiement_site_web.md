@@ -120,6 +120,8 @@ Les fonctionnalités suivantes ont été implémentées et testées :
 3. Installer les dépendances :
    ```
    pip install -r requirements.txt
+   # Flask-CORS est nécessaire pour les requêtes cross-origin
+   pip install Flask-CORS
    ```
 
 4. Configurer les variables d'environnement :

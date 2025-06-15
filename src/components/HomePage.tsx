@@ -1,7 +1,13 @@
 import React from 'react';
+import { mockMerchProducts, mockDesigns } from '../data/mockData';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+
+function getDesignImage(designId: string): string {
+  const design = mockDesigns.find((d) => d.id === designId);
+  return design ? design.imageUrl : 'https://via.placeholder.com/300';
+}
 
 function Hero() {
   return (
@@ -28,18 +34,29 @@ function Hero() {
 }
 
 function BestSellers() {
-  const products = [1, 2, 3];
+  const products = mockMerchProducts.slice(0, 3);
   return (
     <section className="py-12 max-w-7xl mx-auto px-4">
       <h2 className="text-2xl font-bold mb-6 text-white">Meilleures ventes</h2>
       <div className="grid gap-6 md:grid-cols-3">
         {products.map((p) => (
-          <div key={p} className="bg-white/10 backdrop-blur border border-purple-800 rounded shadow p-4 flex flex-col items-center text-center">
-            <div className="bg-gray-200 h-40 w-full mb-4" />
-            <h3 className="font-semibold text-white">Produit {p}</h3>
-            <p className="text-sm text-purple-200">Créateur {p}</p>
-            <p className="font-bold my-2 text-white">0,{p} ETH</p>
-            <button className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded">Voir</button>
+          <div
+            key={p.id}
+            className="bg-white/10 backdrop-blur border border-purple-800 rounded shadow p-4 flex flex-col items-center text-center"
+          >
+            <img
+              src={getDesignImage(p.designId)}
+              alt={p.name}
+              className="h-40 w-full object-cover mb-4"
+            />
+            <h3 className="font-semibold text-white">{p.name}</h3>
+            <p className="text-sm text-purple-200">{p.type}</p>
+            <p className="font-bold my-2 text-white">
+              {p.price} {p.currency}
+            </p>
+            <button className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded">
+              Voir
+            </button>
           </div>
         ))}
       </div>

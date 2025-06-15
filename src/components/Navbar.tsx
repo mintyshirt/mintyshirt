@@ -96,8 +96,6 @@ export default function Navbar() {
             <Link to="/tokenswap" className="hover:text-purple-300 whitespace-nowrap">TokenSwap</Link>
             <Link to="/design-hub" className="hover:text-purple-300 whitespace-nowrap">DesignHub</Link>
             <Link to="/stats" className="hover:text-purple-300 whitespace-nowrap">Stats</Link>
-            <Link to="/become-creator" className="hover:text-purple-300 whitespace-nowrap">Devenir Créateur</Link>
-            <Link to="/upload-design" className="hover:text-purple-300 whitespace-nowrap">Téléverser un Design</Link>
           </div>
         </div>
       </div>

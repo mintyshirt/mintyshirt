@@ -191,6 +191,12 @@ export default function StatsPage() {
               >
                 Voir la page du créateur
               </Link>
+              <Link
+                to={`/stats/${creator.slug}`}
+                className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"
+              >
+                Voir les statistiques détaillées
+              </Link>
             </div>
           ))}
         </div>

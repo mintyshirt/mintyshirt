@@ -114,7 +114,9 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - `VITE_API_URL` : URL de l'API backend
      - Le frontend utilise l'utilitaire `API_BASE` (voir `src/lib/api.ts`) qui se
        base sur cette variable. Si elle n'est pas renseignée, `/api` sera
-       utilisé par défaut.
+       utilisé par défaut. Si le backend expose ses routes sous `/api`, cette
+       valeur doit inclure ce préfixe, par exemple&nbsp;:
+       `VITE_API_URL=https://example.com/api`
    - `VITE_CONTRACT_REGISTRY` : Adresse du contrat MintyShirtRegistry
    - `VITE_CONTRACT_LICENSE` : Adresse du contrat LicenseManager
    - `VITE_CONTRACT_REVENUE` : Adresse du contrat RevenueDistributor

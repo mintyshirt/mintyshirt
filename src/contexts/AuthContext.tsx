@@ -39,23 +39,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (username: string, password: string) => {
-    const res = await fetch(`${API_BASE}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
-    });
-    if (!res.ok) {
-      throw new Error('Invalid credentials');
+    try {
+      const res = await fetch(`${API_BASE}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.message || 'Invalid credentials');
+      }
+
+      const userData: UserInfo = {
+        id: data.id,
+        username: data.username,
+        email: data.email,
+        role: data.role || 'fan',
+      };
+      localStorage.setItem('authUser', JSON.stringify(userData));
+      setUser(userData);
+    } catch (err: any) {
+      if (err instanceof TypeError) {
+        throw new Error('Network error. Please try again later.');
+      }
+      throw err;
     }
-    const data = await res.json();
-    const userData: UserInfo = {
-      id: data.id,
-      username: data.username,
-      email: data.email,
-      role: data.role || 'fan',
-    };
-    localStorage.setItem('authUser', JSON.stringify(userData));
-    setUser(userData);
   };
 
   const logout = () => {

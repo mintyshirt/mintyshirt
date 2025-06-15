@@ -13,21 +13,32 @@ export default function RegisterPage() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch(`${API_BASE}/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, password })
-    });
-    if (res.ok) {
+    setMessage('');
+    try {
+      const res = await fetch(`${API_BASE}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password })
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setMessage(data.message || 'Erreur');
+        return;
+      }
+
       try {
         await login(username, password);
         navigate('/choose-role');
       } catch (err: any) {
         setMessage(err.message || 'Erreur');
       }
-    } else {
-      const data = await res.json().catch(() => ({}));
-      setMessage(data.message || 'Erreur');
+    } catch (err: any) {
+      if (err instanceof TypeError) {
+        setMessage('Erreur réseau. Veuillez réessayer plus tard.');
+      } else {
+        setMessage(err.message || 'Erreur');
+      }
     }
   }
 

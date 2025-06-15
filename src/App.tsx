@@ -15,6 +15,8 @@ import IpAssetPage from './components/IpAssetPage';
 import StatsPage from './components/StatsPage';
 import CreatorStatsPage from './components/CreatorStatsPage';
 import WalletConnectPage from './components/WalletConnectPage';
+import BecomeCreatorPage from './components/BecomeCreatorPage';
+import UploadDesignPage from './components/UploadDesignPage';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/design-hub" element={<DesignHubPage />} />
         <Route path="/design-hub/:id" element={<IpAssetPage />} />
         <Route path="/wallet-connect" element={<WalletConnectPage />} />
+        <Route path="/become-creator" element={<BecomeCreatorPage />} />
+        <Route path="/upload-design" element={<UploadDesignPage />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/stats/:creatorHandle" element={<CreatorStatsPage />} />
       </Routes>

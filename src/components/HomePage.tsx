@@ -16,12 +16,12 @@ function Hero() {
         >
           Explorer les produits
         </Link>
-        <a
-          href="/register"
+        <Link
+          to="/become-creator"
           className="bg-white text-purple-700 hover:bg-purple-100 transition-colors px-6 py-2 rounded font-semibold"
         >
-          vendre un produit
-        </a>
+          Devenir créateur
+        </Link>
       </div>
     </section>
   );

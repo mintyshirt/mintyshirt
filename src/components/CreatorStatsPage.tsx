@@ -5,16 +5,18 @@ import Footer from './Footer';
 
 interface StatsEntry {
   date: string;
-  sales: number;
+  merchVolume: number;
+  itemsSold: number;
   tokenVolume: number;
+  tokenTx: number;
 }
 
 const sampleData: StatsEntry[] = [
-  { date: '2024-05-01', sales: 120, tokenVolume: 50 },
-  { date: '2024-05-02', sales: 80, tokenVolume: 30 },
-  { date: '2024-05-03', sales: 60, tokenVolume: 25 },
-  { date: '2024-05-04', sales: 100, tokenVolume: 45 },
-  { date: '2024-05-05', sales: 70, tokenVolume: 20 },
+  { date: '2024-05-01', merchVolume: 1200, itemsSold: 12, tokenVolume: 50, tokenTx: 5 },
+  { date: '2024-05-02', merchVolume: 800, itemsSold: 8, tokenVolume: 30, tokenTx: 3 },
+  { date: '2024-05-03', merchVolume: 600, itemsSold: 6, tokenVolume: 25, tokenTx: 2 },
+  { date: '2024-05-04', merchVolume: 1000, itemsSold: 10, tokenVolume: 45, tokenTx: 4 },
+  { date: '2024-05-05', merchVolume: 700, itemsSold: 7, tokenVolume: 20, tokenTx: 2 },
 ];
 
 const periods = [
@@ -22,7 +24,9 @@ const periods = [
   { label: '7j', value: '7d' },
   { label: '30j', value: '30d' },
   { label: '90j', value: '90d' },
-  { label: 'Tout', value: 'all' },
+  { label: 'Année', value: '1y' },
+  { label: 'Toutes périodes', value: 'all' },
+  { label: 'Période personnalisée', value: 'custom' },
 ];
 
 export default function CreatorStatsPage() {
@@ -30,15 +34,17 @@ export default function CreatorStatsPage() {
   const [period, setPeriod] = useState('7d');
 
   const current = sampleData; // would be filtered by period in a real app
-  const totalSales = current.reduce((sum, d) => sum + d.sales, 0);
-  const totalVolume = current.reduce((sum, d) => sum + d.tokenVolume, 0);
+  const merchVolume = current.reduce((sum, d) => sum + d.merchVolume, 0);
+  const itemsSold = current.reduce((sum, d) => sum + d.itemsSold, 0);
+  const tokenVolume = current.reduce((sum, d) => sum + d.tokenVolume, 0);
+  const tokenTx = current.reduce((sum, d) => sum + d.tokenTx, 0);
 
   return (
     <div className="font-sans">
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-1">Stats de {creatorHandle}</h1>
+          <h1 className="text-3xl font-bold mb-1">Statistiques détaillées de {creatorHandle}</h1>
           <p className="text-sm">Performances économiques du créateur.</p>
         </div>
 
@@ -60,8 +66,8 @@ export default function CreatorStatsPage() {
               Graphique ventes (exemple)
             </div>
             <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-1">
-              <div className="font-semibold">Ventes totales : {totalSales}</div>
-              <div className="font-semibold">Volume TokenSwap : {totalVolume} ETH</div>
+              <div className="font-semibold">Volume de ventes de merches : {merchVolume} €</div>
+              <div className="font-semibold">Nombre d'articles vendus : {itemsSold}</div>
             </div>
           </div>
           <div className="space-y-2">
@@ -69,8 +75,8 @@ export default function CreatorStatsPage() {
               Graphique tokens (exemple)
             </div>
             <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-1">
-              <div className="font-semibold">Transactions : {current.length}</div>
-              <div className="font-semibold">Période sélectionnée : {period}</div>
+              <div className="font-semibold">Volume des échanges : {tokenVolume} ETH</div>
+              <div className="font-semibold">Nombre de transactions : {tokenTx}</div>
             </div>
           </div>
         </div>

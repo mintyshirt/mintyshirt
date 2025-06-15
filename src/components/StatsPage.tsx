@@ -86,19 +86,6 @@ export default function StatsPage() {
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('sales');
   const [country, setCountry] = useState('');
-  const [period, setPeriod] = useState('7d');
-
-  const periods = [
-    { label: 'Derniers 7 jours', value: '7d' },
-    { label: 'Dernier mois', value: '1m' },
-    { label: 'Cette année', value: '1y' },
-  ];
-
-  const statsByPeriod: Record<string, { merch: number; swap: number; creators: number }> = {
-    '7d': { merch: 12500, swap: 14, creators: 8 },
-    '1m': { merch: 48600, swap: 63, creators: 22 },
-    '1y': { merch: 572000, swap: 720, creators: 95 },
-  };
 
   const filtered = creators
     .filter((c) => (category ? c.category === category : true))
@@ -133,46 +120,7 @@ export default function StatsPage() {
           </p>
         </div>
 
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            {periods.map((p) => (
-              <button
-                key={p.value}
-                onClick={() => setPeriod(p.value)}
-                className={`px-3 py-1 rounded border ${period === p.value ? 'bg-purple-600' : 'bg-white/10'}`}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-2 text-center">
-              <div className="h-24 bg-purple-600/40 rounded flex items-center justify-center">
-                Graphique merch
-              </div>
-              <div className="font-semibold">
-                {statsByPeriod[period].merch.toLocaleString('fr-FR')} € de merch
-              </div>
-            </div>
-            <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-2 text-center">
-              <div className="h-24 bg-purple-600/40 rounded flex items-center justify-center">
-                Graphique tokens
-              </div>
-              <div className="font-semibold">
-                {statsByPeriod[period].swap} ETH échangés
-              </div>
-            </div>
-            <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-2 text-center">
-              <div className="h-24 bg-purple-600/40 rounded flex items-center justify-center">
-                Graphique créateurs
-              </div>
-              <div className="font-semibold">
-                {statsByPeriod[period].creators} créateurs actifs
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="flex flex-wrap items-center gap-2">
           <select
@@ -228,16 +176,16 @@ export default function StatsPage() {
               <p>Revenus merch (30j) : {creator.merchRevenue.toLocaleString('fr-FR')} €</p>
               <p>Membres groupe privé : {creator.groupMembers}</p>
               <Link
-                to={`/creators/${creator.slug}`}
-                className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"
-              >
-                Voir la page du créateur
-              </Link>
-              <Link
                 to={`/stats/${creator.slug}`}
                 className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"
               >
                 Voir les statistiques détaillées
+              </Link>
+              <Link
+                to={`/creators/${creator.slug}`}
+                className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"
+              >
+                Voir la page du créateur
               </Link>
             </div>
           ))}

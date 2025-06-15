@@ -1,23 +1,21 @@
 import { useState } from 'react';
-import { API_BASE } from '../lib/api';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const { login, user } = useAuth();
+  const navigate = useNavigate();
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    const res = await fetch(`${API_BASE}/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-    });
-    if (res.ok) {
-      setMessage('Connexion réussie');
-    } else {
-      const data = await res.json().catch(() => ({}));
-      setMessage(data.message || 'Erreur');
+    try {
+      await login(username, password);
+      navigate('/choose-role');
+    } catch (err: any) {
+      setMessage(err.message || 'Erreur');
     }
   }
 

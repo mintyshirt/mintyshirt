@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { API_BASE } from '../lib/api';
 
 export default function RegisterPage() {
@@ -6,6 +8,8 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -15,7 +19,12 @@ export default function RegisterPage() {
       body: JSON.stringify({ username, email, password })
     });
     if (res.ok) {
-      setMessage('Inscription réussie');
+      try {
+        await login(username, password);
+        navigate('/choose-role');
+      } catch (err: any) {
+        setMessage(err.message || 'Erreur');
+      }
     } else {
       const data = await res.json().catch(() => ({}));
       setMessage(data.message || 'Erreur');

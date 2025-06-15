@@ -49,7 +49,7 @@ export default function Navbar() {
         <div className="flex items-center space-x-6 pt-2">
           <Link
             to="/"
-            className="font-bold text-2xl whitespace-nowrap mr-8"
+            className="font-bold text-2xl whitespace-nowrap mr-8 logo-font"
           >
             MintyShirt
           </Link>

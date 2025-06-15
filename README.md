@@ -126,6 +126,7 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
 2. Configurer le service Web :
    - Type : Python
    - Build command : `pip install -r requirements.txt`
+   - Le paquet `Flask-CORS` doit être présent pour autoriser les requêtes CORS
    - Start command : `python -m flask run --host=0.0.0.0 --port=$PORT`
    - Type : Node
    - Build command : `npm install && npm run build`

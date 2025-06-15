@@ -2,18 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
-interface Creator {
-  name: string;
-  slug: string;
-}
+import { mockCreators, Creator } from '../data/mockData';
 
 export default function CreatorsPage() {
-  const creators: Creator[] = [
-    { name: 'Alice', slug: 'alice' },
-    { name: 'Bob', slug: 'bob' },
-    { name: 'Charlie', slug: 'charlie' },
-  ];
+  const creators: Creator[] = mockCreators;
 
   return (
     <div className="font-sans">
@@ -23,12 +15,21 @@ export default function CreatorsPage() {
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {creators.map((creator) => (
             <Link
-              key={creator.slug}
-              to={`/creators/${creator.slug}`}
+              key={creator.id}
+              to={`/creators/${creator.username.slice(1).toLowerCase()}`}
               className="bg-white/10 backdrop-blur border border-purple-800 rounded shadow p-4 flex flex-col items-center text-center hover:bg-white/20 transition-colors"
             >
-              <div className="bg-gray-200 h-32 w-full mb-2" />
-              <h3 className="font-semibold capitalize">{creator.name}</h3>
+              <img
+                src={creator.bannerImageUrl}
+                alt={creator.username}
+                className="h-32 w-full mb-2 object-cover"
+              />
+              <img
+                src={creator.profilePictureUrl}
+                alt={creator.username}
+                className="w-16 h-16 rounded-full -mt-8 border-2 border-white"
+              />
+              <h3 className="font-semibold mt-2">{creator.username}</h3>
             </Link>
           ))}
         </div>

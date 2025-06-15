@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categories } from '../lib/categories';
+import WalletConnectButton from './WalletConnectButton';
 
 export default function Navbar() {
 
@@ -33,12 +34,7 @@ export default function Navbar() {
             <span className="text-xl">🛒</span>
             <span className="absolute -top-1 -right-2 bg-purple-600 text-white text-xs rounded-full px-1">0</span>
           </button>
-          <Link
-            to="/wallet-connect"
-            className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded whitespace-nowrap"
-          >
-            Connecter le portefeuille
-          </Link>
+          <WalletConnectButton />
           <Link
             to="/login"
             className="bg-purple-500 hover:bg-purple-600 transition-colors text-white px-3 py-1 rounded whitespace-nowrap"

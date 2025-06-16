@@ -2,6 +2,34 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const texts = {
+  en: {
+    title: 'Detailed statistics for',
+    subtitle: 'Creator economic performance.',
+    salesChart: 'Sales chart (sample)',
+    tokenChart: 'Token chart (sample)',
+    merchVolume: 'Merch sales volume',
+    itemsSold: 'Items sold',
+    tokenVolume: 'Trading volume',
+    tokenTx: 'Number of transactions',
+    back: 'Back to overall stats',
+    viewProfile: 'View full creator profile',
+  },
+  fr: {
+    title: 'Statistiques détaillées de',
+    subtitle: 'Performances économiques du créateur.',
+    salesChart: 'Graphique ventes (exemple)',
+    tokenChart: 'Graphique tokens (exemple)',
+    merchVolume: 'Volume de ventes de merches',
+    itemsSold: "Nombre d'articles vendus",
+    tokenVolume: 'Volume des échanges',
+    tokenTx: 'Nombre de transactions',
+    back: 'Retour aux statistiques générales',
+    viewProfile: 'Voir le profil complet du créateur',
+  },
+} as const;
 
 interface StatsEntry {
   date: string;
@@ -31,6 +59,8 @@ const periods = [
 
 export default function CreatorStatsPage() {
   const { creatorHandle } = useParams<{ creatorHandle: string }>();
+  const { language } = useLanguage();
+  const t = texts[language];
   const [period, setPeriod] = useState('7d');
 
   const current = sampleData; // would be filtered by period in a real app
@@ -44,8 +74,8 @@ export default function CreatorStatsPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-1">Statistiques détaillées de {creatorHandle}</h1>
-          <p className="text-sm">Performances économiques du créateur.</p>
+          <h1 className="text-3xl font-bold mb-1">{t.title} {creatorHandle}</h1>
+          <p className="text-sm">{t.subtitle}</p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -63,20 +93,20 @@ export default function CreatorStatsPage() {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <div className="h-48 bg-white/10 border border-purple-800 rounded flex items-center justify-center">
-              Graphique ventes (exemple)
+              {t.salesChart}
             </div>
             <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-1">
-              <div className="font-semibold">Volume de ventes de merches : {merchVolume} €</div>
-              <div className="font-semibold">Nombre d'articles vendus : {itemsSold}</div>
+              <div className="font-semibold">{t.merchVolume} : {merchVolume} €</div>
+              <div className="font-semibold">{t.itemsSold} : {itemsSold}</div>
             </div>
           </div>
           <div className="space-y-2">
             <div className="h-48 bg-white/10 border border-purple-800 rounded flex items-center justify-center">
-              Graphique tokens (exemple)
+              {t.tokenChart}
             </div>
             <div className="bg-white/10 border border-purple-800 rounded p-4 space-y-1">
-              <div className="font-semibold">Volume des échanges : {tokenVolume} ETH</div>
-              <div className="font-semibold">Nombre de transactions : {tokenTx}</div>
+              <div className="font-semibold">{t.tokenVolume} : {tokenVolume} ETH</div>
+              <div className="font-semibold">{t.tokenTx} : {tokenTx}</div>
             </div>
           </div>
         </div>
@@ -86,13 +116,13 @@ export default function CreatorStatsPage() {
             to="/stats"
             className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded"
           >
-            Retour aux statistiques générales
+            {t.back}
           </Link>
           <Link
             to={`/creators/${creatorHandle}`}
             className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded"
           >
-            Voir le profil complet du créateur
+            {t.viewProfile}
           </Link>
         </div>
       </div>

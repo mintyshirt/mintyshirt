@@ -5,6 +5,45 @@ import Footer from './Footer';
 import { categories } from '../lib/categories';
 import { useLanguage } from '../contexts/LanguageContext';
 
+const texts = {
+  en: {
+    title: 'Statistics',
+    subtitle: 'Overview of sales and activity.',
+    description:
+      'Track creators\' performance on MintyShirt. Rankings are based on merch sales, token activity and community engagement.',
+    categories: 'Categories',
+    sortSales: 'Top merch sales',
+    sortTokens: 'Most traded tokens',
+    sortGroup: 'Most active groups',
+    sortNew: 'New creators',
+    country: 'Country',
+    viewStats: 'View detailed stats',
+    viewCreator: 'View creator page',
+    legend: 'Legend',
+    legendUpdated: 'Figures are updated every 24h.',
+    legendVolume: 'TokenSwap volume reflects secondary sales.',
+    legendMerch: 'Merch revenue only counts products sold via MintyShirt.',
+  },
+  fr: {
+    title: 'Statistiques',
+    subtitle: 'Aperçu des ventes et activités.',
+    description:
+      "Suivez les performances économiques des créateurs actifs sur MintyShirt. Classement basé sur les ventes de produits, l’activité liée aux tokens, et l'engagement communautaire.",
+    categories: 'Catégories',
+    sortSales: 'Meilleures ventes merch',
+    sortTokens: 'Tokens les plus échangés',
+    sortGroup: 'Groupes les plus actifs',
+    sortNew: 'Nouveaux créateurs',
+    country: 'Pays',
+    viewStats: 'Voir les statistiques détaillées',
+    viewCreator: 'Voir la page du créateur',
+    legend: 'Légende',
+    legendUpdated: 'Les chiffres sont actualisés toutes les 24h.',
+    legendVolume: 'Le volume TokenSwap correspond aux ventes secondaires de tokens.',
+    legendMerch: 'Les revenus merch incluent uniquement les produits vendus via MintyShirt.',
+  },
+} as const;
+
 interface CreatorStats {
   slug: string;
   username: string;
@@ -88,6 +127,7 @@ export default function StatsPage() {
   const [sort, setSort] = useState('sales');
   const [country, setCountry] = useState('');
   const { language } = useLanguage();
+  const t = texts[language];
 
   const normalizeCategory = (name: string) => {
     const map: Record<string, string> = {
@@ -125,13 +165,9 @@ export default function StatsPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-6">
         <div>
-          <h1 className="text-3xl font-bold mb-1">Statistiques</h1>
-          <p className="text-sm">Aperçu des ventes et activités.</p>
-          <p className="text-sm mt-1">
-            Suivez les performances économiques des créateurs actifs sur
-            MintyShirt. Classement basé sur les ventes de produits, l’activité
-            liée aux tokens, et l'engagement communautaire.
-          </p>
+          <h1 className="text-3xl font-bold mb-1">{t.title}</h1>
+          <p className="text-sm">{t.subtitle}</p>
+          <p className="text-sm mt-1">{t.description}</p>
         </div>
 
 
@@ -142,7 +178,7 @@ export default function StatsPage() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="">Catégories</option>
+            <option value="">{t.categories}</option>
             {categories.map((cat) => {
               const label = language === 'fr' ? cat.nameFr : cat.nameEn;
               return (
@@ -158,10 +194,10 @@ export default function StatsPage() {
             value={sort}
             onChange={(e) => setSort(e.target.value)}
           >
-            <option value="sales">Meilleures ventes merch</option>
-            <option value="tokens">Tokens les plus échangés</option>
-            <option value="group">Groupes les plus actifs</option>
-            <option value="new">Nouveaux créateurs</option>
+            <option value="sales">{t.sortSales}</option>
+            <option value="tokens">{t.sortTokens}</option>
+            <option value="group">{t.sortGroup}</option>
+            <option value="new">{t.sortNew}</option>
           </select>
 
           <select
@@ -169,7 +205,7 @@ export default function StatsPage() {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           >
-            <option value="">Pays</option>
+            <option value="">{t.country}</option>
             {countries.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -196,26 +232,23 @@ export default function StatsPage() {
                 to={`/stats/${creator.slug}`}
                 className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"
               >
-                Voir les statistiques détaillées
+                {t.viewStats}
               </Link>
               <Link
                 to={`/creators/${creator.slug}`}
                 className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"
               >
-                Voir la page du créateur
+                {t.viewCreator}
               </Link>
             </div>
           ))}
         </div>
 
         <div className="text-sm space-y-1">
-          <h2 className="font-semibold">Légende</h2>
-          <p>Les chiffres sont actualisés toutes les 24h.</p>
-          <p>Le volume TokenSwap correspond aux ventes secondaires de tokens.</p>
-          <p>
-            Les revenus merch incluent uniquement les produits vendus via
-            MintyShirt.
-          </p>
+          <h2 className="font-semibold">{t.legend}</h2>
+          <p>{t.legendUpdated}</p>
+          <p>{t.legendVolume}</p>
+          <p>{t.legendMerch}</p>
         </div>
       </div>
       <Footer />

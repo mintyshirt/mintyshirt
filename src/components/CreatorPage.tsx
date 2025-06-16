@@ -2,6 +2,20 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const texts = {
+  en: {
+    notFound: 'Creator not found.',
+    designs: 'Designs',
+    merch: 'Merch products',
+  },
+  fr: {
+    notFound: 'Créateur non trouvé.',
+    designs: 'Designs',
+    merch: 'Produits merch',
+  },
+} as const;
 import {
   mockCreators,
   mockIPAssets,
@@ -16,6 +30,8 @@ function getDesignImage(designId: string): string {
 
 export default function CreatorPage() {
   const { slug } = useParams<{ slug: string }>();
+  const { language } = useLanguage();
+  const t = texts[language];
   const creator = mockCreators.find(
     (c) => c.username.slice(1).toLowerCase() === slug
   );
@@ -24,7 +40,7 @@ export default function CreatorPage() {
     return (
       <div className="font-sans">
         <Navbar />
-        <div className="max-w-7xl mx-auto mt-6 px-4 text-white">Créateur non trouvé.</div>
+        <div className="max-w-7xl mx-auto mt-6 px-4 text-white">{t.notFound}</div>
         <Footer />
       </div>
     );
@@ -60,7 +76,7 @@ export default function CreatorPage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Designs</h2>
+          <h2 className="text-2xl font-semibold mb-2">{t.designs}</h2>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {creatorDesigns.map((design) => (
               <div
@@ -79,7 +95,7 @@ export default function CreatorPage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Produits merch</h2>
+          <h2 className="text-2xl font-semibold mb-2">{t.merch}</h2>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {creatorMerch.map((product) => (
               <div

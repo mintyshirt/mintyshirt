@@ -5,6 +5,57 @@ import Footer from './Footer';
 import { tokens, SwapToken } from '../lib/tokens';
 import { categories } from '../lib/categories';
 import { useLanguage } from '../contexts/LanguageContext';
+
+const texts = {
+  en: {
+    title: 'Royalty Tokens',
+    search: 'Search for a token or creator',
+    categories: 'Categories',
+    sortPopular: 'Popular',
+    sortPrice: 'Price',
+    sortRecent: 'Recent',
+    sortShare: '% revenue',
+    min: 'Min',
+    max: 'Max',
+    creator: 'Creator',
+    currentPrice: 'Current price',
+    change24h: '24h change',
+    volume24h: '24h volume',
+    revenueShare: 'Revenue share',
+    ipAsset: 'IP Asset',
+    view: 'View',
+    perks: 'Perks',
+    viewToken: 'View Token',
+    prev: 'Previous',
+    next: 'Next',
+    disclaimer:
+      'Royalty Tokens offered on MintyShirt are not security tokens and do not guarantee returns. Holders earn revenue only if the creator generates sales.',
+  },
+  fr: {
+    title: 'Royalty Tokens',
+    search: 'Rechercher un token ou un créateur',
+    categories: 'Catégories',
+    sortPopular: 'Populaires',
+    sortPrice: 'Prix',
+    sortRecent: 'Récents',
+    sortShare: '% revenus',
+    min: 'Min',
+    max: 'Max',
+    creator: 'Créateur',
+    currentPrice: 'Prix actuel',
+    change24h: 'Évolution 24h',
+    volume24h: 'Volume 24h',
+    revenueShare: '% revenus partagés',
+    ipAsset: 'IP Asset',
+    view: 'Voir',
+    perks: 'Avantages',
+    viewToken: 'Voir le Token',
+    prev: 'Précédent',
+    next: 'Suivant',
+    disclaimer:
+      'Les Royalty Tokens proposés sur MintyShirt ne sont pas des security tokens. Ils ne constituent pas une promesse de gain financier. Le détenteur touche des revenus uniquement si l’activité du créateur génère des ventes.',
+  },
+} as const;
 import { FaArrowUp, FaArrowDown, FaMinus } from 'react-icons/fa';
 
 export default function RoyaltyTokensPage() {
@@ -15,6 +66,7 @@ export default function RoyaltyTokensPage() {
   const [maxPrice, setMaxPrice] = useState('');
   const [page, setPage] = useState(1);
   const { language } = useLanguage();
+  const t = texts[language];
 
   const ITEMS_PER_PAGE = 6;
 
@@ -62,19 +114,19 @@ export default function RoyaltyTokensPage() {
     <div className="font-sans">
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-4">
-        <h1 className="text-3xl font-bold">Royalty Tokens</h1>
+        <h1 className="text-3xl font-bold">{t.title}</h1>
 
         <div className="bg-white/10 backdrop-blur p-4 rounded border border-purple-800 space-y-2">
           <input
             type="text"
-            placeholder="Rechercher un token ou un créateur"
+            placeholder={t.search}
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="border p-2 text-black w-full md:w-1/2"
           />
           <div className="flex flex-wrap items-end space-x-2">
             <select value={category} onChange={e => setCategory(e.target.value)} className="border p-2 text-black">
-              <option value="">Catégories</option>
+              <option value="">{t.categories}</option>
               {categories.map(c => {
                 const label = language === 'fr' ? c.nameFr : c.nameEn;
                 return (
@@ -83,52 +135,52 @@ export default function RoyaltyTokensPage() {
               })}
             </select>
             <select value={sort} onChange={e => setSort(e.target.value)} className="border p-2 text-black">
-              <option value="popular">Populaires</option>
-              <option value="price">Prix</option>
-              <option value="recent">Récents</option>
-              <option value="share">% revenus</option>
+              <option value="popular">{t.sortPopular}</option>
+              <option value="price">{t.sortPrice}</option>
+              <option value="recent">{t.sortRecent}</option>
+              <option value="share">{t.sortShare}</option>
             </select>
-            <input type="number" placeholder="Min" value={minPrice} onChange={e => setMinPrice(e.target.value)} className="border p-2 text-black w-24" />
-            <input type="number" placeholder="Max" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} className="border p-2 text-black w-24" />
+            <input type="number" placeholder={t.min} value={minPrice} onChange={e => setMinPrice(e.target.value)} className="border p-2 text-black w-24" />
+            <input type="number" placeholder={t.max} value={maxPrice} onChange={e => setMaxPrice(e.target.value)} className="border p-2 text-black w-24" />
           </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {paginated.map((t: SwapToken) => (
-            <div key={t.id} className="bg-white/10 backdrop-blur border border-purple-800 rounded shadow p-4 space-y-2">
+          {paginated.map((token: SwapToken) => (
+            <div key={token.id} className="bg-white/10 backdrop-blur border border-purple-800 rounded shadow p-4 space-y-2">
               <div className="flex items-center space-x-2">
-                <div className="text-2xl">{t.logo}</div>
-                <h3 className="font-semibold">{t.name}</h3>
+                <div className="text-2xl">{token.logo}</div>
+                <h3 className="font-semibold">{token.name}</h3>
               </div>
               <div>
-                Créateur:
-                <Link to={`/creators/${t.creatorSlug}`} className="text-purple-300 hover:underline ml-1">
-                  {t.creator}
+                {t.creator}:
+                <Link to={`/creators/${token.creatorSlug}`} className="text-purple-300 hover:underline ml-1">
+                  {token.creator}
                 </Link>
               </div>
-              <div>Prix actuel: {t.lastPrice} ETH</div>
-              <div>Évolution 24h: {changeIcon(t.change24h)}</div>
-              <div>Volume 24h: {t.volume24h} ETH</div>
-              <div>% revenus partagés: {t.revenueShare}%</div>
+              <div>{t.currentPrice}: {token.lastPrice} ETH</div>
+              <div>{t.change24h}: {changeIcon(token.change24h)}</div>
+              <div>{t.volume24h}: {token.volume24h} ETH</div>
+              <div>{t.revenueShare}: {token.revenueShare}%</div>
               <div>
-                IP Asset:
-                <Link to={`/design-hub/${t.ipAssetId}`} className="text-purple-300 hover:underline ml-1">
-                  Voir
+                {t.ipAsset}:
+                <Link to={`/design-hub/${token.ipAssetId}`} className="text-purple-300 hover:underline ml-1">
+                  {t.view}
                 </Link>
               </div>
               <div>
-                <div className="font-semibold">Avantages</div>
+                <div className="font-semibold">{t.perks}</div>
                 <ul className="list-disc list-inside text-sm space-y-1">
-                  {t.perks.map(p => (
+                  {token.perks.map(p => (
                     <li key={p}>{p}</li>
                   ))}
                 </ul>
               </div>
               <Link
-                to={`/tokenswap/${t.id}`}
+                to={`/tokenswap/${token.id}`}
                 className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded text-center block"
               >
-                Voir le Token
+                {t.viewToken}
               </Link>
             </div>
           ))}
@@ -141,7 +193,7 @@ export default function RoyaltyTokensPage() {
               disabled={page === 1}
               className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded disabled:opacity-50"
             >
-              Précédent
+              {t.prev}
             </button>
             <span>
               Page {page} / {pageCount}
@@ -151,14 +203,12 @@ export default function RoyaltyTokensPage() {
               disabled={page === pageCount}
               className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded disabled:opacity-50"
             >
-              Suivant
+              {t.next}
             </button>
           </div>
         )}
 
-        <p className="text-sm mt-4">
-          Les Royalty Tokens proposés sur MintyShirt ne sont pas des security tokens. Ils ne constituent pas une promesse de gain financier, mais représentent un droit à redevance lié à l’usage commercial d’une œuvre ou d’une marque, déterminé par le créateur lui-même. MintyShirt ne garantit aucun rendement. Le détenteur touche des revenus uniquement si l’activité du créateur génère des ventes.
-        </p>
+        <p className="text-sm mt-4">{t.disclaimer}</p>
       </div>
       <Footer />
     </div>

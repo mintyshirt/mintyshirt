@@ -21,7 +21,7 @@ const creators: CreatorStats[] = [
   {
     slug: 'artistx',
     username: '@ArtistX',
-    category: 'Jeux Vidéo',
+    category: 'Jeux vidéo',
     country: 'France',
     ipAssets: 3,
     tokensIssued: 3000,
@@ -33,7 +33,7 @@ const creators: CreatorStats[] = [
   {
     slug: 'mangay',
     username: '@MangaY',
-    category: 'Mangas',
+    category: 'Manga',
     country: 'Japon',
     ipAssets: 5,
     tokensIssued: 1500,
@@ -87,8 +87,20 @@ export default function StatsPage() {
   const [sort, setSort] = useState('sales');
   const [country, setCountry] = useState('');
 
+  const normalizeCategory = (name: string) => {
+    const map: Record<string, string> = {
+      'Mangas': 'Manga',
+      'Musique': 'Musiciens',
+      'Jeux vidéos': 'Jeux vidéo',
+      'Comics/fantastique': 'BD & Animés',
+    };
+    return map[name] || name;
+  };
+
   const filtered = creators
-    .filter((c) => (category ? c.category === category : true))
+    .filter((c) =>
+      category ? normalizeCategory(c.category) === normalizeCategory(category) : true
+    )
     .filter((c) => (country ? c.country === country : true));
 
   const sorted = [...filtered].sort((a, b) => {

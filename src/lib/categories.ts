@@ -1,19 +1,32 @@
 export interface Category {
-  name: string;
   slug: string;
+  nameEn: string;
+  nameFr: string;
 }
 
 export const categories: Category[] = [
-  { name: 'Créateurs de contenu', slug: 'createurs-de-contenu' },
-  { name: 'Musiciens', slug: 'musiciens' },
-  { name: 'Mangas', slug: 'mangas' },
-  { name: 'BD & Animés', slug: 'bd-animes' },
-  { name: 'Jeux vidéo', slug: 'jeux-video' },
-  { name: 'Séries', slug: 'series' },
-  { name: 'Films', slug: 'films' },
-  { name: 'Art visuel', slug: 'art-visuel' },
-  { name: 'Clubs sportifs', slug: 'clubs-sportifs' },
-  { name: 'Crypto', slug: 'crypto' },
-  { name: 'Collections de NFTs', slug: 'collections-de-nfts' },
-  { name: 'Marques & Entreprises', slug: 'marques-entreprises' }
+  {
+    slug: 'createurs-de-contenu',
+    nameEn: 'Content creators',
+    nameFr: 'Créateurs de contenu'
+  },
+  { slug: 'musiciens', nameEn: 'Musicians', nameFr: 'Musiciens' },
+  { slug: 'mangas', nameEn: 'Manga', nameFr: 'Mangas' },
+  { slug: 'bd-animes', nameEn: 'Comics & Anime', nameFr: 'BD & Animés' },
+  { slug: 'jeux-video', nameEn: 'Video games', nameFr: 'Jeux vidéo' },
+  { slug: 'series', nameEn: 'TV shows', nameFr: 'Séries' },
+  { slug: 'films', nameEn: 'Movies', nameFr: 'Films' },
+  { slug: 'art-visuel', nameEn: 'Visual art', nameFr: 'Art visuel' },
+  { slug: 'clubs-sportifs', nameEn: 'Sports clubs', nameFr: 'Clubs sportifs' },
+  { slug: 'crypto', nameEn: 'Crypto', nameFr: 'Crypto' },
+  {
+    slug: 'collections-de-nfts',
+    nameEn: 'NFT collections',
+    nameFr: 'Collections de NFTs'
+  },
+  {
+    slug: 'marques-entreprises',
+    nameEn: 'Brands & Companies',
+    nameFr: 'Marques & Entreprises'
+  }
 ];

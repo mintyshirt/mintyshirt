@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { categories } from '../lib/categories';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface IPAsset {
   id: number;
@@ -82,6 +83,7 @@ export default function DesignHubPage() {
   const [type, setType] = React.useState('');
   const [order, setOrder] = React.useState('');
   const [country, setCountry] = React.useState('');
+  const { language } = useLanguage();
 
   const filtered = sampleAssets
     .filter((asset) =>
@@ -140,11 +142,14 @@ export default function DesignHubPage() {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option value="">Catégories</option>
-              {categories.map((c) => (
-                <option key={c.slug} value={c.name}>
-                  {c.name}
-                </option>
-              ))}
+              {categories.map((c) => {
+                const label = language === 'fr' ? c.nameFr : c.nameEn;
+                return (
+                  <option key={c.slug} value={c.nameFr}>
+                    {label}
+                  </option>
+                );
+              })}
             </select>
             <select
               className="text-black p-1 rounded"

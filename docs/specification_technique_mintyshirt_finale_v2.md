@@ -16,18 +16,16 @@ MintyShirt est une plateforme de merchandising Web3 innovante permettant aux cr�
 - Categories (menu déroulant dans cet ordre précis) :
   - Créateurs de contenu
   - Musiciens
-  - Jeux vidéo
-  - Manga
+  - Mangas
   - BD & Animés
-  - Crypto
-  - NFT
-  - Clubs sportifs
+  - Jeux vidéo
   - Séries
   - Films
   - Art visuel
-  - Mode
-  - Marques & entreprises
-  - Autres
+  - Clubs sportifs
+  - Crypto
+  - Collections de NFTs
+  - Marques & Entreprises
 - Créateurs
 - Royalty Tokens
 - TokenSwap

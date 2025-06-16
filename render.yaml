@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mintyshirt
+    env: node
+    buildCommand: yarn install && yarn run build
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 3000

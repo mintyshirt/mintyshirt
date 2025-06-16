@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { categories } from '../lib/categories';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useTranslations } from '../contexts/LanguageContext';
 
 interface IPAsset {
   id: number;
@@ -84,6 +84,7 @@ export default function DesignHubPage() {
   const [order, setOrder] = React.useState('');
   const [country, setCountry] = React.useState('');
   const { language } = useLanguage();
+  const t = useTranslations();
 
   const filtered = sampleAssets
     .filter((asset) =>
@@ -119,18 +120,14 @@ export default function DesignHubPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-6">
         <div>
-          <h1 className="text-3xl font-bold">DesignHub</h1>
-          <p className="text-sm">
-            Explorez, louez, remixez les designs les plus originaux du web. Ici,
-            chaque design est une propriété intellectuelle protégée sur la
-            blockchain.
-          </p>
+          <h1 className="text-3xl font-bold">{t.designHub.title}</h1>
+          <p className="text-sm">{t.designHub.subtitle}</p>
         </div>
 
         <div className="space-y-2">
           <input
             type="text"
-            placeholder="Rechercher un IP Asset ou un créateur..."
+            placeholder={t.designHub.searchPlaceholder}
             className="border rounded px-2 py-1 text-black w-full"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -141,7 +138,7 @@ export default function DesignHubPage() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="">Catégories</option>
+              <option value="">{t.designHub.categories}</option>
               {categories.map((c) => {
                 const label = language === 'fr' ? c.nameFr : c.nameEn;
                 return (
@@ -156,39 +153,39 @@ export default function DesignHubPage() {
               value={status}
               onChange={(e) => setStatus(e.target.value)}
             >
-              <option value="">Statut</option>
-              <option value="Disponible">Disponible</option>
-              <option value="Loué">Loué</option>
-              <option value="Remix autorisé">Remix autorisé</option>
+              <option value="">{t.designHub.status}</option>
+              <option value="Disponible">{t.designHub.statusAvailable}</option>
+              <option value="Loué">{t.designHub.statusRented}</option>
+              <option value="Remix autorisé">{t.designHub.statusRemixAllowed}</option>
             </select>
             <select
               className="text-black p-1 rounded"
               value={type}
               onChange={(e) => setType(e.target.value)}
             >
-              <option value="">Type</option>
-              <option value="principal">IP principal</option>
-              <option value="fork">Fork (IP enfant)</option>
+              <option value="">{t.designHub.type}</option>
+              <option value="principal">{t.designHub.typeMain}</option>
+              <option value="fork">{t.designHub.typeFork}</option>
             </select>
             <select
               className="text-black p-1 rounded"
               value={order}
               onChange={(e) => setOrder(e.target.value)}
             >
-              <option value="">Ordre</option>
-              <option value="Populaires">Populaires</option>
-              <option value="Nouveaux">Nouveaux</option>
-              <option value="Plus loués">Plus loués</option>
+              <option value="">{t.designHub.order}</option>
+              <option value="Populaires">{t.designHub.orderPopular}</option>
+              <option value="Nouveaux">{t.designHub.orderNew}</option>
+              <option value="Plus loués">{t.designHub.orderMostRented}</option>
             </select>
             <select
               className="text-black p-1 rounded"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             >
-              <option value="">Pays</option>
-              <option value="FR">France</option>
-              <option value="US">États-Unis</option>
-              <option value="JP">Japon</option>
+              <option value="">{t.designHub.country}</option>
+              <option value="FR">{t.designHub.countryFR}</option>
+              <option value="US">{t.designHub.countryUS}</option>
+              <option value="JP">{t.designHub.countryJP}</option>
             </select>
           </div>
         </div>
@@ -222,25 +219,22 @@ export default function DesignHubPage() {
               </div>
               <span className="text-xs mb-2">
                 {asset.isFork
-                  ? `Fork - ${asset.generation}ème génération`
-                  : 'IP Principal'}
+                  ? `${t.designHub.forkPrefix} ${asset.generation}${t.designHub.generationSuffix}`
+                  : t.designHub.ipMain}
               </span>
               <Link
                 to={`/design-hub/${asset.id}`}
                 className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-1 rounded"
               >
-                Voir l'IP
+                {t.designHub.viewIp}
               </Link>
             </div>
           ))}
         </div>
 
         <div className="text-sm text-center space-y-1">
-          <p>Cet IP Asset est protégé sur la blockchain via Story Protocol.</p>
-          <p>
-            Toutes les actions de licence, fork, et autres sont traçables et
-            vérifiables on-chain.
-          </p>
+          <p>{t.designHub.explanation1}</p>
+          <p>{t.designHub.explanation2}</p>
         </div>
       </div>
       <Footer />

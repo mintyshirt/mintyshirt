@@ -171,7 +171,7 @@ export default function RoyaltyTokensPage() {
               <div>
                 <div className="font-semibold">{t.perks}</div>
                 <ul className="list-disc list-inside text-sm space-y-1">
-                  {token.perks.map(p => (
+                  {token.perks[language].map(p => (
                     <li key={p}>{p}</li>
                   ))}
                 </ul>

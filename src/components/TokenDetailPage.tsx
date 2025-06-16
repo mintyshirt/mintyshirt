@@ -82,7 +82,7 @@ export default function TokenDetailPage() {
               <div className="bg-white/10 backdrop-blur border border-purple-800 rounded p-4">
                 <div className="font-semibold mb-2">{t.perks}</div>
                 <ul className="space-y-1">
-                  {token.perks.map(p => (
+                  {token.perks[language].map(p => (
                     <li key={p} className="flex items-center">
                       <FaCheck className="text-green-500 mr-2" />
                       <span>{p}</span>

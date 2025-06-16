@@ -2,6 +2,24 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const texts = {
+  en: {
+    sortPopular: 'Most Popular',
+    sortNew: 'New Arrivals',
+    sortSales: 'Best Sellers',
+    sortActive: 'Most Active',
+    view: 'View',
+  },
+  fr: {
+    sortPopular: 'Plus Populaires',
+    sortNew: 'Nouveaux Ajouts',
+    sortSales: 'Meilleures Ventes',
+    sortActive: 'Plus Actifs',
+    view: 'Voir',
+  },
+} as const;
 
 interface Product {
   id: number;
@@ -117,6 +135,8 @@ const products: Product[] = [
 
 export default function AccessoryCategoryPage() {
   const { category } = useParams();
+  const { language } = useLanguage();
+  const t = texts[language];
   const [sort, setSort] = useState('popular');
 
   const filtered = products.filter((p) => p.category === category);
@@ -145,10 +165,10 @@ export default function AccessoryCategoryPage() {
             value={sort}
             onChange={(e) => setSort(e.target.value)}
           >
-            <option value="popular">Plus Populaires</option>
-            <option value="new">Nouveaux Ajouts</option>
-            <option value="sales">Meilleures Ventes</option>
-            <option value="active">Plus Actifs</option>
+            <option value="popular">{t.sortPopular}</option>
+            <option value="new">{t.sortNew}</option>
+            <option value="sales">{t.sortSales}</option>
+            <option value="active">{t.sortActive}</option>
           </select>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -166,7 +186,7 @@ export default function AccessoryCategoryPage() {
               <p className="text-sm text-purple-200">{p.creator}</p>
               <p className="font-bold my-2">{p.price} ETH</p>
               <button className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded">
-                Voir
+                {t.view}
               </button>
             </div>
           ))}

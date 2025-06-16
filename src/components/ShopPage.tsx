@@ -2,6 +2,22 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import React from 'react';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const texts = {
+  en: {
+    title: 'Shop',
+    description: 'Find merch from your favourite creators and discover new inspiration.',
+    accessories: 'Accessories',
+    select: 'Select an accessory type to view products.',
+  },
+  fr: {
+    title: 'La Boutique',
+    description: 'Trouvez le merch de vos créateurs préférés et découvrez de nouvelles inspirations.',
+    accessories: 'Accessoires',
+    select: "Sélectionnez un type d'accessoire pour afficher les produits.",
+  },
+} as const;
 
 const accessories = [
   { name: 'T-shirts', path: 't-shirts' },
@@ -19,21 +35,20 @@ const accessories = [
 ];
 
 export default function ShopPage() {
-  // TODO: replace hardcoded language logic with context/i18n when available
-  const language = 'fr';
-  const title = language === 'fr' ? 'La Boutique' : 'Shop';
+  const { language } = useLanguage();
+  const t = texts[language];
   return (
     <div className="font-sans">
       <Navbar />
       <h1 className="text-3xl font-bold text-white max-w-7xl mx-auto mt-6 px-4">
-        {title}
+        {t.title}
       </h1>
       <p className="text-white max-w-7xl mx-auto mt-2 px-4">
-        Trouvez le merch de vos créateurs préférés et découvrez de nouvelles inspirations.
+        {t.description}
       </p>
       <div className="flex max-w-7xl mx-auto mt-4 px-4 space-x-6">
         <aside className="w-48">
-          <h2 className="font-bold mb-2 text-white">Accessoires</h2>
+          <h2 className="font-bold mb-2 text-white">{t.accessories}</h2>
           <ul className="space-y-1">
             {accessories.map((a) => (
               <li key={a.path}>
@@ -45,7 +60,7 @@ export default function ShopPage() {
           </ul>
         </aside>
         <div className="flex-1 text-white">
-          <p>Sélectionnez un type d&apos;accessoire pour afficher les produits.</p>
+          <p>{t.select}</p>
         </div>
       </div>
       <Footer />

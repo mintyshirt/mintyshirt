@@ -5,16 +5,28 @@ import Footer from './Footer';
 import { categories } from '../lib/categories';
 import { useLanguage } from '../contexts/LanguageContext';
 
+const texts = {
+  en: {
+    title: 'Categories',
+    coming: 'Content for category',
+  },
+  fr: {
+    title: 'Catégories',
+    coming: 'Contenu pour la catégorie',
+  },
+} as const;
+
 export default function CategoriesPage() {
   const { slug } = useParams<{ slug?: string }>();
   const { language } = useLanguage();
+  const t = texts[language];
 
   if (!slug) {
     return (
       <div className="font-sans">
         <Navbar />
         <div className="max-w-7xl mx-auto mt-6 px-4 text-white">
-          <h1 className="text-3xl font-bold mb-4">Catégories</h1>
+          <h1 className="text-3xl font-bold mb-4">{t.title}</h1>
           <ul className="space-y-2">
             {categories.map((cat) => {
               const label = language === 'fr' ? cat.nameFr : cat.nameEn;
@@ -43,8 +55,8 @@ export default function CategoriesPage() {
           {category ? (language === 'fr' ? category.nameFr : category.nameEn) : slug}
         </h1>
         <p>
-          Contenu pour la catégorie{' '}
-          {category ? (language === 'fr' ? category.nameFr : category.nameEn) : slug} à venir.
+          {t.coming}{' '}
+          {category ? (language === 'fr' ? category.nameFr : category.nameEn) : slug}...
         </p>
       </div>
       <Footer />

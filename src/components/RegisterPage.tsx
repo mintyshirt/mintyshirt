@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { API_BASE } from '../lib/api';
+import { useTranslations } from '../contexts/LanguageContext';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -10,6 +11,7 @@ export default function RegisterPage() {
   const [message, setMessage] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
+  const t = useTranslations();
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -44,28 +46,28 @@ export default function RegisterPage() {
 
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold mb-2 text-white">Inscription</h1>
+      <h1 className="text-xl font-bold mb-2 text-white">{t.register.title}</h1>
       <form onSubmit={submit} className="space-y-2 max-w-sm">
         <input
           className="border p-2 w-full text-black bg-white"
-          placeholder="Nom d'utilisateur"
+          placeholder={t.register.username}
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className="border p-2 w-full text-black bg-white"
-          placeholder="Email"
+          placeholder={t.register.email}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="border p-2 w-full text-black bg-white"
           type="password"
-          placeholder="Mot de passe"
+          placeholder={t.register.password}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="bg-purple-600 text-white px-4 py-2" type="submit">S'inscrire</button>
+        <button className="bg-purple-600 text-white px-4 py-2" type="submit">{t.register.submit}</button>
       </form>
       {message && <p className="mt-2 text-white">{message}</p>}
     </div>

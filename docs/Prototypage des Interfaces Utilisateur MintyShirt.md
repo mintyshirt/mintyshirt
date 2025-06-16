@@ -78,7 +78,7 @@ Cette page présente l'ensemble des créateurs classés par popularité et activ
 - Barre de recherche avec placeholder : "Rechercher un créateur par nom ou catégorie..."
 - Filtres (dropdown) :
   - Trier par : [Plus Populaires] [Nouveaux Ajouts] [Plus Actifs (ventes merch)] [Plus Actifs (échanges tokens)] [Nombre d'IPs]
-  - Catégories : [Mangas] [Séries] [Films] [Jeux Vidéo] [Musiciens] [Crypto] [NFT] [Art visuel] [Clubs Sportifs] [Comics/Fantastiques]
+  - Catégories : [Créateurs de contenu] [Musiciens] [Mangas] [BD & Animés] [Jeux Vidéo] [Séries] [Films] [Art visuel] [Clubs Sportifs] [Crypto] [Collections de NFTs] [Marques & Entreprises]
   - Pays : sélection déroulante
 
 ### Grille des créateurs
@@ -365,8 +365,9 @@ L'interface TokenSwap permet d'explorer et d'échanger les Royalty Tokens.
 │  │ [Recherche...]                                                      ││
 │  │                                                                     ││
 │  │ Catégories:                                                         ││
-│  │ [Mangas][Musique][Jeux vidéos][Art visuel][Crypto][Clubs sportifs]  ││
-│  │ [NFT][Séries][Films][Comics/fantastique]                            ││
+│  │ [Créateurs de contenu][Musiciens][Mangas][BD & Animés][Jeux vidéos] ││
+│  │ [Séries][Films][Art visuel][Clubs sportifs][Crypto][Collections de  ││
+│  │ NFTs][Marques & Entreprises]                                        ││
 │  │                                                                     ││
 │  │ Tri: [Top ventes▼]  Prix: Min[___] Max[___]  [Appliquer]            ││
 │  └─────────────────────────────────────────────────────────────────────┘│

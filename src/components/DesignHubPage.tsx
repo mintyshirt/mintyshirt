@@ -12,8 +12,10 @@ interface IPAsset {
   creator: { name: string; avatar: string };
   isFork: boolean;
   generation: number;
-  status: string;
-  category: string;
+  statusEn: string;
+  statusFr: string;
+  categoryEn: string;
+  categoryFr: string;
   type: string;
   country: string;
   popularity: number;
@@ -32,8 +34,10 @@ const sampleAssets: IPAsset[] = [
     creator: { name: 'Alice', avatar: 'https://via.placeholder.com/32?text=A' },
     isFork: false,
     generation: 1,
-    status: 'Disponible',
-    category: 'Manga',
+    statusEn: 'Available',
+    statusFr: 'Disponible',
+    categoryEn: 'Manga',
+    categoryFr: 'Manga',
     type: 'principal',
     country: 'JP',
     popularity: 10,
@@ -50,8 +54,10 @@ const sampleAssets: IPAsset[] = [
     creator: { name: 'Bob', avatar: 'https://via.placeholder.com/32?text=B' },
     isFork: true,
     generation: 2,
-    status: 'Remix autorisé',
-    category: 'Jeux vidéo',
+    statusEn: 'Remix allowed',
+    statusFr: 'Remix autorisé',
+    categoryEn: 'Video games',
+    categoryFr: 'Jeux vidéo',
     type: 'fork',
     country: 'US',
     popularity: 8,
@@ -67,8 +73,10 @@ const sampleAssets: IPAsset[] = [
     creator: { name: 'Clara', avatar: 'https://via.placeholder.com/32?text=C' },
     isFork: false,
     generation: 1,
-    status: 'Loué',
-    category: 'Musiciens',
+    statusEn: 'Rented',
+    statusFr: 'Loué',
+    categoryEn: 'Musicians',
+    categoryFr: 'Musiciens',
     type: 'principal',
     country: 'FR',
     popularity: 5,
@@ -91,8 +99,20 @@ export default function DesignHubPage() {
       asset.name.toLowerCase().includes(search.toLowerCase()) ||
       asset.creator.name.toLowerCase().includes(search.toLowerCase())
     )
-    .filter((asset) => (category ? asset.category === category : true))
-    .filter((asset) => (status ? asset.status === status : true))
+    .filter((asset) =>
+      category
+        ? language === 'fr'
+          ? asset.categoryFr === category
+          : asset.categoryEn === category
+        : true
+    )
+    .filter((asset) =>
+      status
+        ? language === 'fr'
+          ? asset.statusFr === status
+          : asset.statusEn === status
+        : true
+    )
     .filter((asset) =>
       type
         ? type === 'principal'
@@ -141,8 +161,9 @@ export default function DesignHubPage() {
               <option value="">{t.designHub.categories}</option>
               {categories.map((c) => {
                 const label = language === 'fr' ? c.nameFr : c.nameEn;
+                const value = label;
                 return (
-                  <option key={c.slug} value={c.nameFr}>
+                  <option key={c.slug} value={value}>
                     {label}
                   </option>
                 );
@@ -154,9 +175,15 @@ export default function DesignHubPage() {
               onChange={(e) => setStatus(e.target.value)}
             >
               <option value="">{t.designHub.status}</option>
-              <option value="Disponible">{t.designHub.statusAvailable}</option>
-              <option value="Loué">{t.designHub.statusRented}</option>
-              <option value="Remix autorisé">{t.designHub.statusRemixAllowed}</option>
+              <option value={t.designHub.statusAvailable}>
+                {t.designHub.statusAvailable}
+              </option>
+              <option value={t.designHub.statusRented}>
+                {t.designHub.statusRented}
+              </option>
+              <option value={t.designHub.statusRemixAllowed}>
+                {t.designHub.statusRemixAllowed}
+              </option>
             </select>
             <select
               className="text-black p-1 rounded"

@@ -125,7 +125,7 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
 
 ### Render (Backend)
 1. Connecter le dépôt GitHub
-2. Utiliser le fichier `render.yaml` à la racine pour configurer le service Node
+2. Le dépôt contient un fichier `render.yaml` à la racine qui configure le service Node sur Render
 
 3. Configurer le service Web :
    - Type : Python
@@ -133,8 +133,9 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - Le paquet `Flask-CORS` doit être présent pour autoriser les requêtes CORS
    - Start command : `python -m flask run --host=0.0.0.0 --port=$PORT`
    - Type : Node
-   - Build command : `npm install && npm run build`
+   - Build command : `yarn install && yarn run build`
    - Start command : `node server.js`
+   - Ces commandes génèrent correctement le dossier `dist/`
 4. Configurer les variables d'environnement :
    - `FLASK_ENV` : production
    - `SECRET_KEY` : clé secrète pour JWT

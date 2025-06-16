@@ -3,9 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { categories } from '../lib/categories';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function CategoriesPage() {
   const { slug } = useParams<{ slug?: string }>();
+  const { language } = useLanguage();
 
   if (!slug) {
     return (
@@ -14,13 +16,16 @@ export default function CategoriesPage() {
         <div className="max-w-7xl mx-auto mt-6 px-4 text-white">
           <h1 className="text-3xl font-bold mb-4">Catégories</h1>
           <ul className="space-y-2">
-            {categories.map((cat) => (
-              <li key={cat.slug}>
-                <Link to={`/categories/${cat.slug}`} className="hover:underline">
-                  {cat.name}
-                </Link>
-              </li>
-            ))}
+            {categories.map((cat) => {
+              const label = language === 'fr' ? cat.nameFr : cat.nameEn;
+              return (
+                <li key={cat.slug}>
+                  <Link to={`/categories/${cat.slug}`} className="hover:underline">
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <Footer />
@@ -35,9 +40,12 @@ export default function CategoriesPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto mt-6 px-4 text-white space-y-2">
         <h1 className="text-3xl font-bold capitalize">
-          {category ? category.name : slug}
+          {category ? (language === 'fr' ? category.nameFr : category.nameEn) : slug}
         </h1>
-        <p>Contenu pour la catégorie {category ? category.name : slug} à venir.</p>
+        <p>
+          Contenu pour la catégorie{' '}
+          {category ? (language === 'fr' ? category.nameFr : category.nameEn) : slug} à venir.
+        </p>
       </div>
       <Footer />
     </div>

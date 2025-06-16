@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { tokens, SwapToken } from '../lib/tokens';
 import { categories } from '../lib/categories';
+import { useLanguage } from '../contexts/LanguageContext';
 import { FaArrowUp, FaArrowDown, FaMinus } from 'react-icons/fa';
 
 export default function RoyaltyTokensPage() {
@@ -13,6 +14,7 @@ export default function RoyaltyTokensPage() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [page, setPage] = useState(1);
+  const { language } = useLanguage();
 
   const ITEMS_PER_PAGE = 6;
 
@@ -73,9 +75,12 @@ export default function RoyaltyTokensPage() {
           <div className="flex flex-wrap items-end space-x-2">
             <select value={category} onChange={e => setCategory(e.target.value)} className="border p-2 text-black">
               <option value="">Catégories</option>
-              {categories.map(c => (
-                <option key={c.slug} value={c.name}>{c.name}</option>
-              ))}
+              {categories.map(c => {
+                const label = language === 'fr' ? c.nameFr : c.nameEn;
+                return (
+                  <option key={c.slug} value={c.nameFr}>{label}</option>
+                );
+              })}
             </select>
             <select value={sort} onChange={e => setSort(e.target.value)} className="border p-2 text-black">
               <option value="popular">Populaires</option>

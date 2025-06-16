@@ -90,15 +90,18 @@ export default function Navbar() {
               <div
                 className={`absolute left-0 mt-2 ${categoriesOpen ? 'block' : 'hidden'} bg-white text-gray-900 shadow rounded p-2 space-y-1`}
               >
-                {categories.map((cat) => (
-                  <Link
-                    key={cat.slug}
-                    to={`/categories/${cat.slug}`}
-                    className="block px-2 py-1 hover:bg-purple-100 whitespace-nowrap"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
+                {categories.map((cat) => {
+                  const label = language === 'fr' ? cat.nameFr : cat.nameEn;
+                  return (
+                    <Link
+                      key={cat.slug}
+                      to={`/categories/${cat.slug}`}
+                      className="block px-2 py-1 hover:bg-purple-100 whitespace-nowrap"
+                    >
+                      {label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
             <Link to="/royalty-tokens" className="hover:text-purple-300 whitespace-nowrap">{t.navbar.royaltyTokens}</Link>

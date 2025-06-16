@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { categories } from '../lib/categories';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface CreatorStats {
   slug: string;
@@ -86,6 +87,7 @@ export default function StatsPage() {
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('sales');
   const [country, setCountry] = useState('');
+  const { language } = useLanguage();
 
   const normalizeCategory = (name: string) => {
     const map: Record<string, string> = {
@@ -141,11 +143,14 @@ export default function StatsPage() {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="">Catégories</option>
-            {categories.map((cat) => (
-              <option key={cat.slug} value={cat.name}>
-                {cat.name}
-              </option>
-            ))}
+            {categories.map((cat) => {
+              const label = language === 'fr' ? cat.nameFr : cat.nameEn;
+              return (
+                <option key={cat.slug} value={cat.nameFr}>
+                  {label}
+                </option>
+              );
+            })}
           </select>
 
           <select

@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { tokens, SwapToken } from '../lib/tokens';
 import { categories } from '../lib/categories';
+import { useLanguage } from '../contexts/LanguageContext';
 import { FaArrowUp, FaArrowDown, FaMinus } from 'react-icons/fa';
 
 export default function TokenSwapPage() {
@@ -13,6 +14,7 @@ export default function TokenSwapPage() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   const filtered = tokens
     .filter(t => t.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -57,9 +59,12 @@ export default function TokenSwapPage() {
           <div className="flex flex-wrap items-end space-x-2">
             <select value={category} onChange={e => setCategory(e.target.value)} className="border p-2 text-black">
               <option value="">Catégories</option>
-              {categories.map(c => (
-                <option key={c.slug} value={c.name}>{c.name}</option>
-              ))}
+              {categories.map(c => {
+                const label = language === 'fr' ? c.nameFr : c.nameEn;
+                return (
+                  <option key={c.slug} value={c.nameFr}>{label}</option>
+                );
+              })}
             </select>
             <select value={sort} onChange={e => setSort(e.target.value)} className="border p-2 text-black">
               <option value="top-sales">Top ventes</option>

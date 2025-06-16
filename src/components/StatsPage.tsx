@@ -23,6 +23,13 @@ const texts = {
     legendUpdated: 'Figures are updated every 24h.',
     legendVolume: 'TokenSwap volume reflects secondary sales.',
     legendMerch: 'Merch revenue only counts products sold via MintyShirt.',
+    creatorCategory: 'Category',
+    creatorCountry: 'Country',
+    creatorIpAssets: 'IP assets',
+    creatorTokensIssued: 'Royalty Tokens issued',
+    creatorTokenSwapVolume: 'TokenSwap volume (30d)',
+    creatorMerchRevenue: 'Merch revenue (30d)',
+    creatorGroupMembers: 'Private group members',
   },
   fr: {
     title: 'Statistiques',
@@ -41,6 +48,13 @@ const texts = {
     legendUpdated: 'Les chiffres sont actualisés toutes les 24h.',
     legendVolume: 'Le volume TokenSwap correspond aux ventes secondaires de tokens.',
     legendMerch: 'Les revenus merch incluent uniquement les produits vendus via MintyShirt.',
+    creatorCategory: 'Catégorie',
+    creatorCountry: 'Pays',
+    creatorIpAssets: 'Actifs IP',
+    creatorTokensIssued: 'Royalty Tokens émis',
+    creatorTokenSwapVolume: 'Volume TokenSwap (30j)',
+    creatorMerchRevenue: 'Revenus merch (30j)',
+    creatorGroupMembers: 'Membres groupe privé',
   },
 } as const;
 
@@ -221,13 +235,13 @@ export default function StatsPage() {
               className="bg-white/10 backdrop-blur border border-purple-800 rounded shadow p-4 text-center space-y-1"
             >
               <h3 className="font-semibold">{creator.username}</h3>
-              <p>Catégorie : {creator.category}</p>
-              <p>Pays : {creator.country}</p>
-              <p>Actifs IP : {creator.ipAssets}</p>
-              <p>Royalty Tokens émis : {creator.tokensIssued}</p>
-              <p>Volume TokenSwap (30j) : {creator.tokenSwapVolume} ETH</p>
-              <p>Revenus merch (30j) : {creator.merchRevenue.toLocaleString('fr-FR')} €</p>
-              <p>Membres groupe privé : {creator.groupMembers}</p>
+              <p>{t.creatorCategory} : {creator.category}</p>
+              <p>{t.creatorCountry} : {creator.country}</p>
+              <p>{t.creatorIpAssets} : {creator.ipAssets}</p>
+              <p>{t.creatorTokensIssued} : {creator.tokensIssued}</p>
+              <p>{t.creatorTokenSwapVolume} : {creator.tokenSwapVolume} ETH</p>
+              <p>{t.creatorMerchRevenue} : {creator.merchRevenue.toLocaleString('fr-FR')} €</p>
+              <p>{t.creatorGroupMembers} : {creator.groupMembers}</p>
               <Link
                 to={`/stats/${creator.slug}`}
                 className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-3 py-1 rounded inline-block mt-2"

@@ -13,7 +13,10 @@ export interface SwapToken {
   ipAssetId: string;
   holders: number;
   revenueShare: number; // percent
-  perks: string[];
+  perks: {
+    en: string[];
+    fr: string[];
+  };
   listedAt: string; // ISO date
 }
 
@@ -33,7 +36,10 @@ export const tokens: SwapToken[] = [
     ipAssetId: '1',
     holders: 78,
     revenueShare: 25,
-    perks: ['Groupe privé', 'Lien d’affiliation', 'Réductions sur le merch'],
+    perks: {
+      en: ['Private group', 'Affiliate link', 'Merch discounts'],
+      fr: ['Groupe privé', 'Lien d’affiliation', 'Réductions sur le merch'],
+    },
     listedAt: '2023-10-01T00:00:00Z'
   },
   {
@@ -51,7 +57,10 @@ export const tokens: SwapToken[] = [
     ipAssetId: '2',
     holders: 42,
     revenueShare: 15,
-    perks: ['Groupe privé', 'Réductions sur le merch'],
+    perks: {
+      en: ['Private group', 'Merch discounts'],
+      fr: ['Groupe privé', 'Réductions sur le merch'],
+    },
     listedAt: '2023-10-03T00:00:00Z'
   },
   {
@@ -69,7 +78,10 @@ export const tokens: SwapToken[] = [
     ipAssetId: '3',
     holders: 55,
     revenueShare: 20,
-    perks: ['Groupe privé'],
+    perks: {
+      en: ['Private group'],
+      fr: ['Groupe privé'],
+    },
     listedAt: '2023-09-28T00:00:00Z'
   }
 ];

@@ -3,23 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { categories } from '../lib/categories';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    title: 'Categories',
-    coming: 'Content for category',
-  },
-  fr: {
-    title: 'Catégories',
-    coming: 'Contenu pour la catégorie',
-  },
-} as const;
 
 export default function CategoriesPage() {
   const { slug } = useParams<{ slug?: string }>();
   const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().categoriesPage;
 
   if (!slug) {
     return (

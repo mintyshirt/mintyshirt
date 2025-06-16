@@ -2,21 +2,12 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    details: 'IP Asset details coming soon.',
-  },
-  fr: {
-    details: "Détails de l'IP Asset à venir.",
-  },
-} as const;
 
 export default function IpAssetPage() {
   const { id } = useParams<{ id: string }>();
-  const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().ipAsset;
   return (
     <div className="font-sans">
       <Navbar />

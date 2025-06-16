@@ -2,24 +2,8 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    sortPopular: 'Most Popular',
-    sortNew: 'New Arrivals',
-    sortSales: 'Best Sellers',
-    sortActive: 'Most Active',
-    view: 'View',
-  },
-  fr: {
-    sortPopular: 'Plus Populaires',
-    sortNew: 'Nouveaux Ajouts',
-    sortSales: 'Meilleures Ventes',
-    sortActive: 'Plus Actifs',
-    view: 'Voir',
-  },
-} as const;
 
 interface Product {
   id: number;
@@ -135,8 +119,7 @@ const products: Product[] = [
 
 export default function AccessoryCategoryPage() {
   const { category } = useParams();
-  const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().accessoryCategory;
   const [sort, setSort] = useState('popular');
 
   const filtered = products.filter((p) => p.category === category);

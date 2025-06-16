@@ -2,20 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    notFound: 'Creator not found.',
-    designs: 'Designs',
-    merch: 'Merch products',
-  },
-  fr: {
-    notFound: 'Créateur non trouvé.',
-    designs: 'Designs',
-    merch: 'Produits merch',
-  },
-} as const;
 import {
   mockCreators,
   mockIPAssets,
@@ -30,8 +18,7 @@ function getDesignImage(designId: string): string {
 
 export default function CreatorPage() {
   const { slug } = useParams<{ slug: string }>();
-  const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().creator;
   const creator = mockCreators.find(
     (c) => c.username.slice(1).toLowerCase() === slug
   );

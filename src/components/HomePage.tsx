@@ -3,6 +3,7 @@ import { mockMerchProducts, mockDesigns } from '../data/mockData';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useTranslations } from '../contexts/LanguageContext';
 
 function getDesignImage(designId: string): string {
   const design = mockDesigns.find((d) => d.id === designId);
@@ -10,23 +11,24 @@ function getDesignImage(designId: string): string {
 }
 
 function Hero() {
+  const t = useTranslations();
   return (
     <section
       className="text-center text-white py-24 bg-gradient-to-r from-purple-800 via-purple-600 to-fuchsia-600"
     >
-      <h1 className="text-4xl md:text-6xl font-bold mb-4">Success is shared</h1>
+      <h1 className="text-4xl md:text-6xl font-bold mb-4">{t.home.heroTitle}</h1>
       <div className="space-x-4">
         <Link
           to="/shop"
           className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-6 py-2 rounded font-semibold"
         >
-          Explorer les produits
+          {t.home.exploreProducts}
         </Link>
         <Link
           to="/become-creator"
           className="bg-white text-purple-700 hover:bg-purple-100 transition-colors px-6 py-2 rounded font-semibold"
         >
-          Devenir créateur
+          {t.home.becomeCreator}
         </Link>
       </div>
     </section>
@@ -34,10 +36,11 @@ function Hero() {
 }
 
 function BestSellers() {
+  const t = useTranslations();
   const products = mockMerchProducts.slice(0, 3);
   return (
     <section className="py-12 max-w-7xl mx-auto px-4">
-      <h2 className="text-2xl font-bold mb-6 text-white">Meilleures ventes</h2>
+      <h2 className="text-2xl font-bold mb-6 text-white">{t.home.bestSellers}</h2>
       <div className="grid gap-6 md:grid-cols-3">
         {products.map((p) => (
           <div
@@ -55,7 +58,7 @@ function BestSellers() {
               {p.price} {p.currency}
             </p>
             <button className="bg-purple-600 hover:bg-purple-700 transition-colors text-white px-4 py-2 rounded">
-              Voir
+              {t.home.view}
             </button>
           </div>
         ))}
@@ -66,23 +69,15 @@ function BestSellers() {
 
 
 function HowItWorks() {
+  const t = useTranslations();
   const steps = [
-    {
-      title: 'Étape 1 : Enregistre tes designs',
-      text: 'Crée des designs originaux et protège-les comme propriétés intellectuelles sur la blockchain en quelques clics.',
-    },
-    {
-      title: 'Étape 2 : Vends ton merch',
-      text: 'Tes designs sont imprimés à la demande sur des t-shirts, sweats et autres produits éco-responsables, puis livrés partout dans le monde.',
-    },
-    {
-      title: 'Étape 3 : Partage les revenus',
-      text: 'Tes fans peuvent acheter des royalty tokens leur permettant de recevoir une part de tes revenus et d\'accéder à des avantages exclusifs.',
-    },
+    { title: t.home.step1Title, text: t.home.step1Text },
+    { title: t.home.step2Title, text: t.home.step2Text },
+    { title: t.home.step3Title, text: t.home.step3Text },
   ];
   return (
     <section className="py-12 px-4 bg-[#2C1D59] text-white">
-      <h2 className="text-2xl font-bold mb-6 text-center">Comment ça marche ?</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">{t.home.howItWorks}</h2>
       <div className="grid gap-6 md:grid-cols-3 max-w-7xl mx-auto">
         {steps.map((s) => (
           <div key={s.title} className="bg-white/10 backdrop-blur rounded p-6 text-center space-y-2 shadow">

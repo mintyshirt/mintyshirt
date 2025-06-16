@@ -3,60 +3,8 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { categories } from '../lib/categories';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    title: 'Statistics',
-    subtitle: 'Overview of sales and activity.',
-    description:
-      'Track creators\' performance on MintyShirt. Rankings are based on merch sales, token activity and community engagement.',
-    categories: 'Categories',
-    sortSales: 'Top merch sales',
-    sortTokens: 'Most traded tokens',
-    sortGroup: 'Most active groups',
-    sortNew: 'New creators',
-    country: 'Country',
-    viewStats: 'View detailed stats',
-    viewCreator: 'View creator page',
-    legend: 'Legend',
-    legendUpdated: 'Figures are updated every 24h.',
-    legendVolume: 'TokenSwap volume reflects secondary sales.',
-    legendMerch: 'Merch revenue only counts products sold via MintyShirt.',
-    creatorCategory: 'Category',
-    creatorCountry: 'Country',
-    creatorIpAssets: 'IP assets',
-    creatorTokensIssued: 'Royalty Tokens issued',
-    creatorTokenSwapVolume: 'TokenSwap volume (30d)',
-    creatorMerchRevenue: 'Merch revenue (30d)',
-    creatorGroupMembers: 'Private group members',
-  },
-  fr: {
-    title: 'Statistiques',
-    subtitle: 'Aperçu des ventes et activités.',
-    description:
-      "Suivez les performances économiques des créateurs actifs sur MintyShirt. Classement basé sur les ventes de produits, l’activité liée aux tokens, et l'engagement communautaire.",
-    categories: 'Catégories',
-    sortSales: 'Meilleures ventes merch',
-    sortTokens: 'Tokens les plus échangés',
-    sortGroup: 'Groupes les plus actifs',
-    sortNew: 'Nouveaux créateurs',
-    country: 'Pays',
-    viewStats: 'Voir les statistiques détaillées',
-    viewCreator: 'Voir la page du créateur',
-    legend: 'Légende',
-    legendUpdated: 'Les chiffres sont actualisés toutes les 24h.',
-    legendVolume: 'Le volume TokenSwap correspond aux ventes secondaires de tokens.',
-    legendMerch: 'Les revenus merch incluent uniquement les produits vendus via MintyShirt.',
-    creatorCategory: 'Catégorie',
-    creatorCountry: 'Pays',
-    creatorIpAssets: 'Actifs IP',
-    creatorTokensIssued: 'Royalty Tokens émis',
-    creatorTokenSwapVolume: 'Volume TokenSwap (30j)',
-    creatorMerchRevenue: 'Revenus merch (30j)',
-    creatorGroupMembers: 'Membres groupe privé',
-  },
-} as const;
 
 interface CreatorStats {
   slug: string;
@@ -141,7 +89,7 @@ export default function StatsPage() {
   const [sort, setSort] = useState('sales');
   const [country, setCountry] = useState('');
   const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().stats;
 
   const normalizeCategory = (name: string) => {
     const map: Record<string, string> = {

@@ -2,34 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useLanguage } from '../contexts/LanguageContext';
-
-const texts = {
-  en: {
-    title: 'Detailed statistics for',
-    subtitle: 'Creator economic performance.',
-    salesChart: 'Sales chart (sample)',
-    tokenChart: 'Token chart (sample)',
-    merchVolume: 'Merch sales volume',
-    itemsSold: 'Items sold',
-    tokenVolume: 'Trading volume',
-    tokenTx: 'Number of transactions',
-    back: 'Back to overall stats',
-    viewProfile: 'View full creator profile',
-  },
-  fr: {
-    title: 'Statistiques détaillées de',
-    subtitle: 'Performances économiques du créateur.',
-    salesChart: 'Graphique ventes (exemple)',
-    tokenChart: 'Graphique tokens (exemple)',
-    merchVolume: 'Volume de ventes de merches',
-    itemsSold: "Nombre d'articles vendus",
-    tokenVolume: 'Volume des échanges',
-    tokenTx: 'Nombre de transactions',
-    back: 'Retour aux statistiques générales',
-    viewProfile: 'Voir le profil complet du créateur',
-  },
-} as const;
+import { useTranslations } from '../contexts/LanguageContext';
 
 interface StatsEntry {
   date: string;
@@ -59,8 +32,7 @@ const periods = [
 
 export default function CreatorStatsPage() {
   const { creatorHandle } = useParams<{ creatorHandle: string }>();
-  const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().creatorStats;
   const [period, setPeriod] = useState('7d');
 
   const current = sampleData; // would be filtered by period in a real app

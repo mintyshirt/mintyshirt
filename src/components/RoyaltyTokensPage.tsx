@@ -4,58 +4,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { tokens, SwapToken } from '../lib/tokens';
 import { categories } from '../lib/categories';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    title: 'Royalty Tokens',
-    search: 'Search for a token or creator',
-    categories: 'Categories',
-    sortPopular: 'Popular',
-    sortPrice: 'Price',
-    sortRecent: 'Recent',
-    sortShare: '% revenue',
-    min: 'Min',
-    max: 'Max',
-    creator: 'Creator',
-    currentPrice: 'Current price',
-    change24h: '24h change',
-    volume24h: '24h volume',
-    revenueShare: 'Revenue share',
-    ipAsset: 'IP Asset',
-    view: 'View',
-    perks: 'Perks',
-    viewToken: 'View Token',
-    prev: 'Previous',
-    next: 'Next',
-    disclaimer:
-      'Royalty Tokens offered on MintyShirt are not security tokens and do not guarantee returns. Holders earn revenue only if the creator generates sales.',
-  },
-  fr: {
-    title: 'Royalty Tokens',
-    search: 'Rechercher un token ou un créateur',
-    categories: 'Catégories',
-    sortPopular: 'Populaires',
-    sortPrice: 'Prix',
-    sortRecent: 'Récents',
-    sortShare: '% revenus',
-    min: 'Min',
-    max: 'Max',
-    creator: 'Créateur',
-    currentPrice: 'Prix actuel',
-    change24h: 'Évolution 24h',
-    volume24h: 'Volume 24h',
-    revenueShare: '% revenus partagés',
-    ipAsset: 'IP Asset',
-    view: 'Voir',
-    perks: 'Avantages',
-    viewToken: 'Voir le Token',
-    prev: 'Précédent',
-    next: 'Suivant',
-    disclaimer:
-      'Les Royalty Tokens proposés sur MintyShirt ne sont pas des security tokens. Ils ne constituent pas une promesse de gain financier. Le détenteur touche des revenus uniquement si l’activité du créateur génère des ventes.',
-  },
-} as const;
 import { FaArrowUp, FaArrowDown, FaMinus } from 'react-icons/fa';
 
 export default function RoyaltyTokensPage() {
@@ -66,7 +16,7 @@ export default function RoyaltyTokensPage() {
   const [maxPrice, setMaxPrice] = useState('');
   const [page, setPage] = useState(1);
   const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().royaltyTokens;
 
   const ITEMS_PER_PAGE = 6;
 

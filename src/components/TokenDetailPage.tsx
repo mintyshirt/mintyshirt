@@ -4,47 +4,13 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { tokens } from '../lib/tokens';
 import { FaCheck } from 'react-icons/fa';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    creator: 'Creator',
-    category: 'Category',
-    ipPage: 'Associated IP page',
-    view: 'View IP',
-    lastPrice: 'Last traded price',
-    volume24h: '24h volume',
-    holders: 'Holders',
-    revenueShare: '% revenue shared',
-    perks: 'Associated perks',
-    buyNow: 'Buy now',
-    viewShop: "View on creator's shop", 
-    notFound: 'Token not found',
-    disclaimer:
-      'Royalty Tokens offered on MintyShirt are not security tokens and do not guarantee returns. Holders earn revenue only if the creator generates sales.',
-  },
-  fr: {
-    creator: 'Créateur',
-    category: 'Catégorie',
-    ipPage: 'Page IP associée',
-    view: "Voir l'actif IP",
-    lastPrice: 'Dernier prix échangé',
-    volume24h: 'Volume 24h',
-    holders: 'Nombre de détenteurs',
-    revenueShare: '% des revenus redistribués',
-    perks: 'Avantages associés',
-    buyNow: 'Acheter maintenant',
-    viewShop: 'Voir sur la boutique du créateur',
-    notFound: 'Token introuvable',
-    disclaimer:
-      'Les Royalty Tokens proposés sur MintyShirt ne sont pas des security tokens. Ils ne constituent pas une promesse de gain financier. Le détenteur touche des revenus uniquement si l’activité du créateur génère des ventes.',
-  },
-} as const;
 
 export default function TokenDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().tokenDetail;
   const token = tokens.find(tk => tk.id === id);
 
   return (

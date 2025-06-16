@@ -2,22 +2,8 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import React from 'react';
 import Footer from './Footer';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    title: 'Shop',
-    description: 'Find merch from your favourite creators and discover new inspiration.',
-    accessories: 'Accessories',
-    select: 'Select an accessory type to view products.',
-  },
-  fr: {
-    title: 'La Boutique',
-    description: 'Trouvez le merch de vos créateurs préférés et découvrez de nouvelles inspirations.',
-    accessories: 'Accessoires',
-    select: "Sélectionnez un type d'accessoire pour afficher les produits.",
-  },
-} as const;
 
 const accessories = [
   { name: 'T-shirts', path: 't-shirts' },
@@ -35,8 +21,7 @@ const accessories = [
 ];
 
 export default function ShopPage() {
-  const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().shop;
   return (
     <div className="font-sans">
       <Navbar />

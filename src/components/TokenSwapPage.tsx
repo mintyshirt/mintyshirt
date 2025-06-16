@@ -4,54 +4,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { tokens, SwapToken } from '../lib/tokens';
 import { categories } from '../lib/categories';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useTranslations } from '../contexts/LanguageContext';
 
-const texts = {
-  en: {
-    title: 'TokenSwap - Royalty Tokens secondary market',
-    subtitle: 'Trade your tokens here.',
-    search: 'Search for a token or creator',
-    categories: 'Categories',
-    sortTopSales: 'Top sales',
-    sortTopPrice: 'Top price',
-    sortRecent: 'Recent',
-    sortPopular: 'Popular',
-    min: 'Min',
-    max: 'Max',
-    logo: 'Logo',
-    name: 'Name',
-    creator: 'Creator',
-    lastPrice: 'Last price',
-    change24h: '24h',
-    volume24h: '24h volume',
-    onSale: 'On sale',
-    buy: 'Buy',
-    disclaimer:
-      'Royalty Tokens offered on MintyShirt are not security tokens and do not guarantee returns. Holders earn revenue only if the creator generates sales.',
-  },
-  fr: {
-    title: 'TokenSwap - Marché secondaire des Royalty Tokens',
-    subtitle: 'Échangez vos tokens ici.',
-    search: 'Rechercher un token ou un créateur',
-    categories: 'Catégories',
-    sortTopSales: 'Top ventes',
-    sortTopPrice: 'Top prix',
-    sortRecent: 'Récents',
-    sortPopular: 'Populaires',
-    min: 'Min',
-    max: 'Max',
-    logo: 'Logo',
-    name: 'Nom',
-    creator: 'Créateur',
-    lastPrice: 'Dernier prix',
-    change24h: '24h',
-    volume24h: 'Volume 24h',
-    onSale: 'En vente',
-    buy: 'Acheter',
-    disclaimer:
-      'Les Royalty Tokens proposés sur MintyShirt ne sont pas des security tokens. Ils ne constituent pas une promesse de gain financier. Le détenteur touche des revenus uniquement si l’activité du créateur génère des ventes.',
-  },
-} as const;
 import { FaArrowUp, FaArrowDown, FaMinus } from 'react-icons/fa';
 
 export default function TokenSwapPage() {
@@ -62,7 +16,7 @@ export default function TokenSwapPage() {
   const [maxPrice, setMaxPrice] = useState('');
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const t = texts[language];
+  const t = useTranslations().tokenSwap;
 
   const filtered = tokens
     .filter(t => t.name.toLowerCase().includes(search.toLowerCase()) ||

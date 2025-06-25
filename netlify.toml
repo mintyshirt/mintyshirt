@@ -10,7 +10,7 @@
 
 [context.production.environment]
   NODE_VERSION = "16"
-  VITE_API_URL = "https://mintyshirt-backend.onrender.com/api"
+  VITE_API_URL = "https://mintyshirt.onrender.com/api"
   VITE_CONTRACT_REGISTRY = "0x7C3149C56527Af298C4393a1D3A27E715E5B174B"
   VITE_CONTRACT_LICENSE = "0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99"
   VITE_CONTRACT_REVENUE = "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318"

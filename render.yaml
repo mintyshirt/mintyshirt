@@ -1,9 +1,22 @@
 services:
   - type: web
-    name: mintyshirt
+    name: mintyshirt-frontend
     env: node
     buildCommand: yarn install && yarn run build
     startCommand: node server.js
     envVars:
       - key: PORT
         value: 3000
+
+  - type: web
+    name: mintyshirt-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/src/main.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: <secure secret>
+      - key: DATABASE_URL
+        value: <database url>

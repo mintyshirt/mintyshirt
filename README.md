@@ -97,6 +97,13 @@ Le projet MintyShirt est une plateforme décentralisée pour les créateurs de d
    - Regroupement de transactions pour réduire les coûts de gaz
    - Utilisation de multicall ou contrats agrégateurs
 
+## Développement Local
+
+Le frontend utilise Vite. Le fichier `vite.config.ts` configure un proxy pour
+rediriger les requêtes vers `/api` vers le backend local sur
+`http://localhost:5000`. Cette règle permet de conserver le même chemin d'API
+entre l'environnement de développement et la production.
+
 ## Instructions pour le Déploiement
 
 ### GitHub

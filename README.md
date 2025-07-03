@@ -104,6 +104,13 @@ rediriger les requêtes vers `/api` vers le backend local sur
 `http://localhost:5000`. Cette règle permet de conserver le même chemin d'API
 entre l'environnement de développement et la production.
 
+## Local Setup
+
+Copiez le fichier `.env.example` en `.env` et ajustez les valeurs selon votre
+environnement. Vérifiez notamment que `VITE_API_URL` pointe vers l'URL de votre
+backend, par exemple `http://localhost:5000/api`. Sans cette variable, les
+appels API échoueront et la connexion utilisateur ne fonctionnera pas.
+
 ## Instructions pour le Déploiement
 
 ### GitHub

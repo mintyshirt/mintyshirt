@@ -8,16 +8,16 @@ import { useTranslations } from '../contexts/LanguageContext';
 const accessories = [
   { name: 'T-shirts', path: 't-shirts' },
   { name: 'Sweatshirts', path: 'sweatshirts' },
-  { name: 'Casquettes', path: 'casquettes' },
+  { name: 'Caps', path: 'casquettes' },
   { name: 'Tote bags', path: 'tote-bags' },
   { name: 'Posters', path: 'posters' },
   { name: 'Stickers', path: 'stickers' },
-  { name: 'Coques de téléphone', path: 'coques-telephone' },
+  { name: 'Phone cases', path: 'coques-telephone' },
   { name: 'Mugs', path: 'mugs' },
-  { name: 'Calendriers muraux', path: 'calendriers-muraux' },
-  { name: 'Albums photo', path: 'albums-photo' },
-  { name: 'Toiles', path: 'toiles' },
-  { name: 'Cartes personnalisées', path: 'cartes-personnalisees' },
+  { name: 'Wall calendars', path: 'calendriers-muraux' },
+  { name: 'Photo albums', path: 'albums-photo' },
+  { name: 'Canvas prints', path: 'toiles' },
+  { name: 'Custom cards', path: 'cartes-personnalisees' },
 ];
 
 export default function ShopPage() {

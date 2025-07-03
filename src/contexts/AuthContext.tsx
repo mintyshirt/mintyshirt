@@ -46,7 +46,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json().catch(() => ({}));
+      const contentType = res.headers.get('content-type');
+      if (!contentType?.includes('application/json')) {
+        throw new Error('API unavailable');
+      }
+
+      const data = await res.json().catch(() => {
+        throw new Error('API unavailable');
+      });
+
+      if (!data.id) {
+        throw new Error('API unavailable');
+      }
+
       if (!res.ok) {
         throw new Error(data.message || 'Invalid credentials');
       }
